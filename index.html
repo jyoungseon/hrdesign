@@ -1,0 +1,628 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HR Design Portfolio | Youngseon Jung</title>
+
+<style>
+:root {
+  --bg: #ffffff;
+  --text: #171717;
+  --sub: #777777;
+  --line: #e9e9e9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont,
+    "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* HEADER */
+header {
+  padding: 28px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.header-right {
+  font-size: 12px;
+  color: var(--sub);
+  letter-spacing: 1px;
+}
+
+/* HERO */
+.hero {
+  padding: 110px 7% 85px;
+}
+
+.hero-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--sub);
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 7vw, 82px);
+  font-weight: 600;
+  letter-spacing: -4px;
+  line-height: 1.08;
+  margin-bottom: 28px;
+}
+
+.hero h1 span {
+  color: #a5a5a5;
+}
+
+.hero-description {
+  font-size: 14px;
+  color: var(--sub);
+  line-height: 1.9;
+  max-width: 470px;
+}
+
+/* NAVIGATION */
+.category-nav {
+  padding: 22px 7%;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 35px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.category-nav a {
+  font-size: 12px;
+  color: var(--sub);
+  transition: color 0.2s;
+}
+
+.category-nav a:hover {
+  color: var(--text);
+}
+
+/* MAIN */
+main {
+  padding: 0 7%;
+}
+
+.project-section {
+  padding: 85px 0 35px;
+  scroll-margin-top: 65px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 35px;
+}
+
+.section-number {
+  font-size: 11px;
+  color: var(--sub);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.section-heading h2 {
+  font-size: 29px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+.section-description {
+  font-size: 12px;
+  color: var(--sub);
+}
+
+/* PROJECT GRID */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 45px 22px;
+}
+
+.project-card {
+  min-width: 0;
+  animation: fadeIn 0.5s ease both;
+}
+
+/* IMAGE GALLERY */
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+  margin-bottom: 17px;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+.project-gallery.single {
+  grid-template-columns: 1fr;
+}
+
+.project-gallery img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.project-gallery img:hover {
+  transform: scale(1.025);
+}
+
+.project-gallery.single img {
+  aspect-ratio: 4 / 3;
+}
+
+/* PROJECT INFO */
+.project-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.project-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.project-company {
+  font-size: 12px;
+  color: var(--sub);
+}
+
+.project-year {
+  font-size: 11px;
+  color: var(--sub);
+  white-space: nowrap;
+}
+
+.project-link {
+  display: inline-flex;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--sub);
+  margin-top: 11px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 2px;
+}
+
+.project-link:hover {
+  color: var(--text);
+}
+
+/* FOOTER */
+footer {
+  margin-top: 100px;
+  padding: 40px 7%;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.footer-copy {
+  font-size: 11px;
+  color: var(--sub);
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 22px 6%;
+  }
+
+  .hero {
+    padding: 80px 6% 65px;
+  }
+
+  .hero h1 {
+    letter-spacing: -2px;
+  }
+
+  .category-nav {
+    padding: 17px 6%;
+    gap: 20px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .category-nav a {
+    white-space: nowrap;
+  }
+
+  main {
+    padding: 0 6%;
+  }
+
+  .project-section {
+    padding-top: 65px;
+  }
+
+  .section-heading {
+    display: block;
+  }
+
+  .section-description {
+    margin-top: 8px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  footer {
+    padding: 30px 6%;
+    margin-top: 70px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="#" class="logo">YOUNGSEON JUNG.</a>
+  <div class="header-right">HR DESIGN PORTFOLIO</div>
+</header>
+
+<section class="hero">
+  <div class="hero-label">DESIGN ARCHIVE · 2021 — 2026</div>
+
+  <h1>
+    HR DESIGN<br>
+    <span>PORTFOLIO.</span>
+  </h1>
+
+  <p class="hero-description">
+    A collection of visual contents, presentations,
+    editorial projects and videos.<br>
+    Exploring the power of design in communication.
+  </p>
+</section>
+
+<nav class="category-nav">
+  <a href="#graphic">01. Graphic Design</a>
+  <a href="#presentation">02. Presentation</a>
+  <a href="#editorial">03. Editorial</a>
+  <a href="#video">04. Video</a>
+</nav>
+
+<main id="portfolio"></main>
+
+<footer>
+  <div class="footer-title">YOUNGSEON JUNG.</div>
+  <div class="footer-copy">
+    © 2026 YOUNGSEON JUNG. ALL RIGHTS RESERVED.
+  </div>
+</footer>
+
+<script>
+
+/* =====================================
+   PROJECT DATA
+
+   Graphic / Presentation:
+   images: 최대 4장
+
+   Editorial / Video:
+   images: 대표 이미지 1장
+   link: 외부 링크
+===================================== */
+
+const projects = [
+
+  // 01. GRAPHIC DESIGN
+  {
+    category: "graphic",
+    title: "Fact-checking Campaign",
+    organization: "Korea Press Foundation",
+    year: "2022",
+    images: [
+      "images/graphic-01-1.jpg",
+      "images/graphic-01-2.jpg",
+      "images/graphic-01-3.jpg",
+      "images/graphic-01-4.jpg"
+    ]
+  },
+
+  {
+    category: "graphic",
+    title: "Student Festival Poster",
+    organization: "Ewha Womans University",
+    year: "2022",
+    images: [
+      "images/graphic-02-1.jpg",
+      "images/graphic-02-2.jpg"
+    ]
+  },
+
+  // 02. PRESENTATION
+  {
+    category: "presentation",
+    title: "Project Proposal",
+    organization: "EILS",
+    year: "2022",
+    images: [
+      "images/ppt-01-1.jpg",
+      "images/ppt-01-2.jpg"
+    ]
+  },
+
+  {
+    category: "presentation",
+    title: "Orientation Presentation",
+    organization: "EILS",
+    year: "2022",
+    images: [
+      "images/ppt-02-1.jpg",
+      "images/ppt-02-2.jpg",
+      "images/ppt-02-3.jpg"
+    ]
+  },
+
+  // 03. EDITORIAL
+  {
+    category: "editorial",
+    title: "University Newsletter",
+    organization: "Ewha Womans University",
+    year: "2022",
+    images: [
+      "images/editorial-01.jpg"
+    ],
+    link: "https://example.com"
+  },
+
+  {
+    category: "editorial",
+    title: "Magazine Project",
+    organization: "Personal Project",
+    year: "2023",
+    images: [
+      "images/editorial-02.jpg"
+    ],
+    link: "https://example.com"
+  },
+
+  // 04. VIDEO
+  {
+    category: "video",
+    title: "Barrier-free Campaign",
+    organization: "University of Edinburgh",
+    year: "2025",
+    images: [
+      "images/video-01.jpg"
+    ],
+    link: "https://youtube.com/"
+  },
+
+  {
+    category: "video",
+    title: "Fact-checking Video",
+    organization: "Korea Press Foundation",
+    year: "2022",
+    images: [
+      "images/video-02.jpg"
+    ],
+    link: "https://youtube.com/"
+  }
+
+];
+
+
+/* CATEGORY SETTINGS */
+
+const categories = [
+  {
+    id: "graphic",
+    number: "01",
+    title: "Graphic Design",
+    description: "Card News · Poster"
+  },
+  {
+    id: "presentation",
+    number: "02",
+    title: "Presentation",
+    description: "PowerPoint · PPT"
+  },
+  {
+    id: "editorial",
+    number: "03",
+    title: "Editorial",
+    description: "Newsletter · Magazine"
+  },
+  {
+    id: "video",
+    number: "04",
+    title: "Video",
+    description: "Short-form · Long-form"
+  }
+];
+
+
+/* RENDER PROJECTS */
+
+const portfolio = document.getElementById("portfolio");
+
+categories.forEach(category => {
+
+  const categoryProjects = projects.filter(
+    project => project.category === category.id
+  );
+
+  if (categoryProjects.length === 0) return;
+
+  const section = document.createElement("section");
+  section.className = "project-section";
+  section.id = category.id;
+
+  section.innerHTML = `
+    <div class="section-heading">
+      <div>
+        <div class="section-number">
+          ${category.number} / PROJECTS
+        </div>
+        <h2>${category.title}</h2>
+      </div>
+
+      <div class="section-description">
+        ${category.description}
+      </div>
+    </div>
+
+    <div class="project-grid">
+
+      ${categoryProjects.map(project => {
+
+        const images = project.images || [];
+
+        return `
+          <article class="project-card">
+
+            <div class="project-gallery
+              ${images.length === 1 ? 'single' : ''}">
+
+              ${images.slice(0, 4).map((image, index) => `
+                <img
+                  src="${image}"
+                  alt="${project.title} - ${index + 1}"
+                  loading="lazy"
+                >
+              `).join("")}
+
+            </div>
+
+            <div class="project-info">
+              <div>
+
+                <div class="project-title">
+                  ${project.title}
+                </div>
+
+                <div class="project-company">
+                  ${project.organization}
+                </div>
+
+                ${project.link ? `
+                  <a
+                    class="project-link"
+                    href="${project.link}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Project ↗
+                  </a>
+                ` : ""}
+
+              </div>
+
+              <div class="project-year">
+                ${project.year}
+              </div>
+            </div>
+
+          </article>
+        `;
+
+      }).join("")}
+
+    </div>
+  `;
+
+  portfolio.appendChild(section);
+
+});
+
+
+/* SMOOTH SCROLL */
+
+document.querySelectorAll(".category-nav a").forEach(link => {
+
+  link.addEventListener("click", function(event) {
+
+    event.preventDefault();
+
+    const target = document.querySelector(
+      this.getAttribute("href")
+    );
+
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>
