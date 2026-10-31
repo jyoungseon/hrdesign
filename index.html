@@ -7,11 +7,18 @@
 <title>HR Design Portfolio | Youngseon Jung</title>
 
 <style>
+/* =========================
+   1. COLOR & BASIC SETTINGS
+========================= */
 :root {
-  --bg: #ffffff;
-  --text: #171717;
-  --sub: #777777;
-  --line: #e9e9e9;
+  --bg: #fcfcfa;
+  --white: #ffffff;
+  --text: #202126;
+  --sub: #777b85;
+  --line: #e8e9ed;
+  --blue: #3158d5;
+  --blue-light: #edf1ff;
+  --blue-hover: #2446b6;
 }
 
 * {
@@ -33,96 +40,118 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-/* HEADER */
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* =========================
+   2. HEADER
+========================= */
 header {
-  padding: 28px 7%;
+  padding: 25px 7%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--line);
+  background: var(--white);
 }
 
 .logo {
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 750;
   letter-spacing: -0.5px;
 }
 
 .header-right {
-  font-size: 12px;
-  color: var(--sub);
-  letter-spacing: 1px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 1.5px;
 }
 
-/* HERO */
+/* =========================
+   3. HERO
+========================= */
 .hero {
-  padding: 110px 7% 85px;
+  padding: 105px 7% 85px;
+  background: var(--bg);
 }
 
 .hero-label {
   font-size: 11px;
+  font-weight: 700;
   letter-spacing: 2px;
-  color: var(--sub);
-  margin-bottom: 24px;
+  color: var(--blue);
+  margin-bottom: 25px;
 }
 
 .hero h1 {
-  font-size: clamp(42px, 7vw, 82px);
-  font-weight: 600;
-  letter-spacing: -4px;
-  line-height: 1.08;
+  font-size: clamp(48px, 7vw, 88px);
+  font-weight: 750;
+  letter-spacing: -5px;
+  line-height: 1.04;
   margin-bottom: 28px;
 }
 
 .hero h1 span {
-  color: #a5a5a5;
+  color: var(--blue);
 }
 
 .hero-description {
   font-size: 14px;
   color: var(--sub);
   line-height: 1.9;
-  max-width: 470px;
+  max-width: 490px;
 }
 
-/* NAVIGATION */
+/* =========================
+   4. CATEGORY NAVIGATION
+========================= */
 .category-nav {
-  padding: 22px 7%;
+  padding: 21px 7%;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   display: flex;
-  gap: 35px;
+  gap: 36px;
   flex-wrap: wrap;
   position: sticky;
   top: 0;
-  background: rgba(255,255,255,0.96);
-  backdrop-filter: blur(10px);
+  background: rgba(252,252,250,0.96);
+  backdrop-filter: blur(12px);
   z-index: 10;
 }
 
 .category-nav a {
   font-size: 12px;
   color: var(--sub);
-  transition: color 0.2s;
+  font-weight: 600;
+  transition: 0.2s;
 }
 
 .category-nav a:hover {
-  color: var(--text);
+  color: var(--blue);
 }
 
-/* MAIN */
+/* =========================
+   5. MAIN SECTIONS
+========================= */
 main {
   padding: 0 7%;
 }
 
 .project-section {
   padding: 85px 0 35px;
-  scroll-margin-top: 65px;
+  scroll-margin-top: 75px;
 }
 
 .section-heading {
@@ -134,15 +163,16 @@ main {
 
 .section-number {
   font-size: 11px;
-  color: var(--sub);
+  font-weight: 700;
+  color: var(--blue);
+  letter-spacing: 1.5px;
   margin-bottom: 8px;
-  letter-spacing: 1px;
 }
 
 .section-heading h2 {
-  font-size: 29px;
-  font-weight: 600;
-  letter-spacing: -1px;
+  font-size: 31px;
+  font-weight: 700;
+  letter-spacing: -1.2px;
 }
 
 .section-description {
@@ -150,11 +180,13 @@ main {
   color: var(--sub);
 }
 
-/* PROJECT GRID */
+/* =========================
+   6. PROJECT GRID
+========================= */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 45px 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 55px 30px;
 }
 
 .project-card {
@@ -162,50 +194,67 @@ main {
   animation: fadeIn 0.5s ease both;
 }
 
-/* IMAGE GALLERY */
-.project-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 5px;
-  margin-bottom: 17px;
-  background: #f5f5f5;
+/* Main Thumbnail */
+.project-thumbnail {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #f0f1f5;
   overflow: hidden;
+  border-radius: 3px;
+  position: relative;
 }
 
-.project-gallery.single {
-  grid-template-columns: 1fr;
-}
-
-.project-gallery img {
+.project-thumbnail img {
   width: 100%;
   height: 100%;
-  aspect-ratio: 4 / 3;
   object-fit: contain;
-  background: #f5f5f5;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.45s ease;
 }
 
-.project-gallery img:hover {
+.project-card:hover .project-thumbnail img {
   transform: scale(1.025);
 }
 
-.project-gallery.single img {
-  aspect-ratio: 4 / 3;
+/* View Details Overlay */
+.thumbnail-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(32, 40, 70, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-/* PROJECT INFO */
+.project-card:hover .thumbnail-overlay {
+  opacity: 1;
+}
+
+.overlay-text {
+  background: var(--white);
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 11px 20px;
+  border-radius: 30px;
+}
+
+/* Project Information */
 .project-info {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
   align-items: flex-start;
+  gap: 12px;
+  padding-top: 18px;
 }
 
 .project-title {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   margin-bottom: 5px;
+  letter-spacing: -0.3px;
 }
 
 .project-company {
@@ -214,30 +263,165 @@ main {
 }
 
 .project-year {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--sub);
   white-space: nowrap;
 }
 
-.project-link {
+/* Detail Button */
+.detail-button {
+  margin-top: 13px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 700;
   display: inline-flex;
-  gap: 6px;
-  font-size: 11px;
+  align-items: center;
+  gap: 7px;
+  transition: 0.2s;
+}
+
+.detail-button:hover {
+  color: var(--blue-hover);
+  gap: 11px;
+}
+
+/* =========================
+   7. MODAL
+========================= */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(20, 23, 32, 0.72);
+  padding: 35px 20px;
+  overflow-y: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 1000px;
+  background: var(--white);
+  border-radius: 8px;
+  padding: 35px;
+  position: relative;
+  margin: auto;
+  animation: modalIn 0.25s ease;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 23px;
+  width: 35px;
+  height: 35px;
+  border: none;
+  background: var(--blue-light);
+  color: var(--blue);
+  border-radius: 50%;
+  font-size: 20px;
+  transition: 0.2s;
+}
+
+.modal-close:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.modal-category {
+  font-size: 10px;
+  font-weight: 750;
+  color: var(--blue);
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
+
+.modal-title {
+  font-size: 25px;
+  font-weight: 750;
+  letter-spacing: -0.8px;
+  margin-bottom: 5px;
+  padding-right: 40px;
+}
+
+.modal-meta {
+  font-size: 12px;
   color: var(--sub);
-  margin-top: 11px;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 2px;
+  margin-bottom: 28px;
 }
 
-.project-link:hover {
-  color: var(--text);
+/* Modal Image Gallery */
+.modal-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
-/* FOOTER */
+.modal-image {
+  background: #f3f4f7;
+  border-radius: 3px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.modal-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 540px;
+  object-fit: contain;
+}
+
+/* Modal External Link */
+.modal-link-area {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-link-label {
+  font-size: 12px;
+  color: var(--sub);
+}
+
+.original-link {
+  display: none;
+  padding: 10px 19px;
+  background: var(--blue);
+  color: var(--white);
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.original-link.visible {
+  display: inline-flex;
+}
+
+.original-link:hover {
+  background: var(--blue-hover);
+}
+
+/* =========================
+   8. FOOTER
+========================= */
 footer {
   margin-top: 100px;
   padding: 40px 7%;
-  border-top: 1px solid var(--line);
+  background: #f3f4f8;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -245,7 +429,7 @@ footer {
 
 .footer-title {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 750;
 }
 
 .footer-copy {
@@ -253,7 +437,9 @@ footer {
   color: var(--sub);
 }
 
-/* ANIMATION */
+/* =========================
+   9. ANIMATIONS
+========================= */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -265,29 +451,37 @@ footer {
   }
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .project-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 600px) {
+/* =========================
+   10. RESPONSIVE
+========================= */
+@media (max-width: 700px) {
+
   header {
     padding: 22px 6%;
   }
 
   .hero {
-    padding: 80px 6% 65px;
+    padding: 75px 6% 65px;
   }
 
   .hero h1 {
-    letter-spacing: -2px;
+    letter-spacing: -2.5px;
   }
 
   .category-nav {
     padding: 17px 6%;
-    gap: 20px;
+    gap: 22px;
     overflow-x: auto;
     flex-wrap: nowrap;
   }
@@ -314,12 +508,38 @@ footer {
 
   .project-grid {
     grid-template-columns: 1fr;
-    gap: 35px;
+    gap: 38px;
+  }
+
+  .modal {
+    padding: 15px;
+    align-items: flex-start;
+  }
+
+  .modal-content {
+    padding: 25px 18px;
+    margin: auto 0;
+  }
+
+  .modal-gallery {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .modal-close {
+    top: 15px;
+    right: 13px;
+  }
+
+  .modal-title {
+    font-size: 21px;
   }
 
   footer {
     padding: 30px 6%;
     margin-top: 70px;
+    gap: 15px;
+    flex-wrap: wrap;
   }
 }
 </style>
@@ -327,11 +547,13 @@ footer {
 
 <body>
 
+<!-- HEADER -->
 <header>
   <a href="#" class="logo">YOUNGSEON JUNG.</a>
   <div class="header-right">HR DESIGN PORTFOLIO</div>
 </header>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-label">DESIGN ARCHIVE · 2021 — 2026</div>
 
@@ -347,6 +569,7 @@ footer {
   </p>
 </section>
 
+<!-- CATEGORY NAVIGATION -->
 <nav class="category-nav">
   <a href="#graphic">01. Graphic Design</a>
   <a href="#presentation">02. Presentation</a>
@@ -354,8 +577,40 @@ footer {
   <a href="#video">04. Video</a>
 </nav>
 
+<!-- PROJECTS -->
 <main id="portfolio"></main>
 
+<!-- PROJECT DETAIL MODAL -->
+<div class="modal" id="projectModal" role="dialog"
+     aria-modal="true" aria-labelledby="modalTitle">
+
+  <div class="modal-content">
+
+    <button class="modal-close" id="modalClose"
+            aria-label="Close">&times;</button>
+
+    <div class="modal-category" id="modalCategory"></div>
+
+    <h2 class="modal-title" id="modalTitle"></h2>
+
+    <div class="modal-meta" id="modalMeta"></div>
+
+    <div class="modal-gallery" id="modalGallery"></div>
+
+    <div class="modal-link-area">
+      <span class="modal-link-label">PROJECT REFERENCE</span>
+
+      <a class="original-link" id="modalLink"
+         href="#" target="_blank"
+         rel="noopener noreferrer">
+        View Original ↗
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-title">YOUNGSEON JUNG.</div>
   <div class="footer-copy">
@@ -363,17 +618,16 @@ footer {
   </div>
 </footer>
 
+
 <script>
 
 /* =====================================
-   PROJECT DATA
+   1. PROJECT DATA
 
-   Graphic / Presentation:
    images: 최대 4장
+   link: 외부 링크 (없으면 생략)
 
-   Editorial / Video:
-   images: 대표 이미지 1장
-   link: 외부 링크
+   이미지 경로는 실제 파일명과 일치시켜 주세요.
 ===================================== */
 
 const projects = [
@@ -403,6 +657,7 @@ const projects = [
     ]
   },
 
+
   // 02. PRESENTATION
   {
     category: "presentation",
@@ -427,6 +682,7 @@ const projects = [
     ]
   },
 
+
   // 03. EDITORIAL
   {
     category: "editorial",
@@ -449,6 +705,7 @@ const projects = [
     ],
     link: "https://example.com"
   },
+
 
   // 04. VIDEO
   {
@@ -476,7 +733,9 @@ const projects = [
 ];
 
 
-/* CATEGORY SETTINGS */
+/* =====================================
+   2. CATEGORY SETTINGS
+===================================== */
 
 const categories = [
   {
@@ -506,7 +765,9 @@ const categories = [
 ];
 
 
-/* RENDER PROJECTS */
+/* =====================================
+   3. RENDER PROJECT CARDS
+===================================== */
 
 const portfolio = document.getElementById("portfolio");
 
@@ -524,41 +785,48 @@ categories.forEach(category => {
 
   section.innerHTML = `
     <div class="section-heading">
+
       <div>
         <div class="section-number">
           ${category.number} / PROJECTS
         </div>
+
         <h2>${category.title}</h2>
       </div>
 
       <div class="section-description">
         ${category.description}
       </div>
+
     </div>
 
     <div class="project-grid">
 
-      ${categoryProjects.map(project => {
+      ${categoryProjects.map((project, index) => {
 
-        const images = project.images || [];
+        const cover = project.images?.[0] || "";
 
         return `
           <article class="project-card">
 
-            <div class="project-gallery
-              ${images.length === 1 ? 'single' : ''}">
+            <div class="project-thumbnail">
 
-              ${images.slice(0, 4).map((image, index) => `
-                <img
-                  src="${image}"
-                  alt="${project.title} - ${index + 1}"
-                  loading="lazy"
-                >
-              `).join("")}
+              <img
+                src="${cover}"
+                alt="${project.title}"
+                loading="lazy"
+              >
+
+              <div class="thumbnail-overlay">
+                <span class="overlay-text">
+                  View Details ↗
+                </span>
+              </div>
 
             </div>
 
             <div class="project-info">
+
               <div>
 
                 <div class="project-title">
@@ -569,22 +837,20 @@ categories.forEach(category => {
                   ${project.organization}
                 </div>
 
-                ${project.link ? `
-                  <a
-                    class="project-link"
-                    href="${project.link}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View Project ↗
-                  </a>
-                ` : ""}
+                <button
+                  class="detail-button"
+                  data-category="${category.id}"
+                  data-index="${index}"
+                >
+                  View Details <span>↗</span>
+                </button>
 
               </div>
 
               <div class="project-year">
                 ${project.year}
               </div>
+
             </div>
 
           </article>
@@ -600,7 +866,152 @@ categories.forEach(category => {
 });
 
 
-/* SMOOTH SCROLL */
+/* =====================================
+   4. MODAL ELEMENTS
+===================================== */
+
+const modal = document.getElementById("projectModal");
+const modalClose = document.getElementById("modalClose");
+const modalCategory = document.getElementById("modalCategory");
+const modalTitle = document.getElementById("modalTitle");
+const modalMeta = document.getElementById("modalMeta");
+const modalGallery = document.getElementById("modalGallery");
+const modalLink = document.getElementById("modalLink");
+
+
+/* =====================================
+   5. OPEN PROJECT DETAILS
+===================================== */
+
+function openProject(categoryId, index) {
+
+  const project = projects.filter(
+    item => item.category === categoryId
+  )[index];
+
+  if (!project) return;
+
+  modalCategory.textContent =
+    categoryId.toUpperCase() + " / PROJECT DETAILS";
+
+  modalTitle.textContent = project.title;
+
+  modalMeta.textContent =
+    `${project.organization}  ·  ${project.year}`;
+
+  // Render all project images (maximum 4)
+  modalGallery.innerHTML = "";
+
+  (project.images || []).slice(0, 4).forEach(imagePath => {
+
+    const imageContainer = document.createElement("div");
+    imageContainer.className = "modal-image";
+
+    const image = document.createElement("img");
+    image.src = imagePath;
+    image.alt = project.title;
+    image.loading = "lazy";
+
+    imageContainer.appendChild(image);
+    modalGallery.appendChild(imageContainer);
+
+  });
+
+
+  // External link
+  if (project.link && project.link.trim() !== "") {
+
+    modalLink.href = project.link;
+    modalLink.classList.add("visible");
+
+  } else {
+
+    modalLink.href = "#";
+    modalLink.classList.remove("visible");
+
+  }
+
+  modal.classList.add("active");
+  document.body.classList.add("modal-open");
+
+  modalClose.focus();
+
+}
+
+
+/* =====================================
+   6. CLOSE MODAL
+===================================== */
+
+function closeModal() {
+
+  modal.classList.remove("active");
+  document.body.classList.remove("modal-open");
+
+}
+
+modalClose.addEventListener("click", closeModal);
+
+
+// Close by clicking outside modal content
+modal.addEventListener("click", event => {
+
+  if (event.target === modal) {
+    closeModal();
+  }
+
+});
+
+
+// Close by ESC key
+document.addEventListener("keydown", event => {
+
+  if (event.key === "Escape" && modal.classList.contains("active")) {
+    closeModal();
+  }
+
+});
+
+
+/* =====================================
+   7. PROJECT BUTTON EVENTS
+===================================== */
+
+portfolio.addEventListener("click", event => {
+
+  const button = event.target.closest(".detail-button");
+
+  if (!button) return;
+
+  openProject(
+    button.dataset.category,
+    Number(button.dataset.index)
+  );
+
+});
+
+
+// Clicking the thumbnail also opens the details
+portfolio.addEventListener("click", event => {
+
+  const thumbnail = event.target.closest(".project-thumbnail");
+
+  if (!thumbnail) return;
+
+  const card = thumbnail.closest(".project-card");
+  const button = card.querySelector(".detail-button");
+
+  openProject(
+    button.dataset.category,
+    Number(button.dataset.index)
+  );
+
+});
+
+
+/* =====================================
+   8. SMOOTH SCROLL
+===================================== */
 
 document.querySelectorAll(".category-nav a").forEach(link => {
 
