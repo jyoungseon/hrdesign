@@ -1,0 +1,116 @@
+
+{
+  "projects": [
+    {
+      "id": "graphic-01",
+      "category": "graphic",
+      "title": "Fact-checking Campaign",
+      "organization": "Korea Press Foundation",
+      "year": "2022",
+      "images": [
+        "images/graphic-01-1.jpg",
+        "images/graphic-01-2.jpg",
+        "images/graphic-01-3.jpg",
+        "images/graphic-01-4.jpg"
+      ],
+      "contribution": "",
+      "tools": [],
+      "link": ""
+    },
+    {
+      "id": "graphic-02",
+      "category": "graphic",
+      "title": "Student Festival Poster",
+      "organization": "Ewha Womans University",
+      "year": "2022",
+      "images": [
+        "images/graphic-02-1.jpg",
+        "images/graphic-02-2.jpg"
+      ],
+      "contribution": "",
+      "tools": [],
+      "link": ""
+    },
+    {
+      "id": "presentation-01",
+      "category": "presentation",
+      "title": "Project Proposal",
+      "organization": "EILS",
+      "year": "2022",
+      "images": [
+        "images/ppt-01-1.jpg",
+        "images/ppt-01-2.jpg"
+      ],
+      "contribution": "",
+      "tools": [],
+      "link": ""
+    },
+    {
+      "id": "presentation-02",
+      "category": "presentation",
+      "title": "Orientation Presentation",
+      "organization": "EILS",
+      "year": "2022",
+      "images": [
+        "images/ppt-02-1.jpg",
+        "images/ppt-02-2.jpg",
+        "images/ppt-02-3.jpg"
+      ],
+      "contribution": "",
+      "tools": [],
+      "link": ""
+    },
+    {
+      "id": "editorial-01",
+      "category": "editorial",
+      "title": "University Newsletter",
+      "organization": "Ewha Womans University",
+      "year": "2022",
+      "images": [
+        "images/editorial-01.jpg"
+      ],
+      "contribution": "",
+      "tools": [],
+      "link": ""
+    },
+    {
+      "id": "editorial-02",
+      "category": "editorial",
+      "title": "Magazine Project",
+      "organization": "Personal Project",
+      "year": "2023",
+      "images": [
+        "images/editorial-02.jpg"
+      ],
+      "contribution": "",
+      "tools": [],
+      "link": ""
+    },
+    {
+      "id": "video-01",
+      "category": "video",
+      "title": "Barrier-free Campaign",
+      "organization": "University of Edinburgh",
+      "year": "2025",
+      "images": [
+        "images/video-01.jpg"
+      ],
+      "contribution": "",
+      "tools": [],
+      "link": "https://youtube.com/"
+    },
+    {
+      "id": "video-02",
+      "category": "video",
+      "title": "Fact-checking Video",
+      "organization": "Korea Press Foundation",
+      "year": "2022",
+      "images": [
+        "images/video-02.jpg"
+      ],
+      "contribution": "",
+      "tools": [],
+      "link": "https://youtube.com/"
+    }
+  ]
+}
