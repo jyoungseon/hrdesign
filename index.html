@@ -2,1429 +2,1000 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HR Design Portfolio | Youngseon Jung</title>
-
-<style>
-:root {
-  --bg: #fcfcfa;
-  --white: #ffffff;
-  --text: #202126;
-  --sub: #777b85;
-  --line: #e8e9ed;
-  --blue: #3158d5;
-  --blue-light: #edf1ff;
-  --blue-hover: #2446b6;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont,
-    "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-body.modal-open {
-  overflow: hidden;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  font: inherit;
-  cursor: pointer;
-}
-
-/* HEADER */
-
-header {
-  padding: 25px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--line);
-  background: var(--white);
-}
-
-.logo {
-  font-size: 15px;
-  font-weight: 750;
-  letter-spacing: -0.5px;
-}
-
-.header-right {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--blue);
-  letter-spacing: 1.5px;
-}
-
-/* HERO */
-
-.hero {
-  padding: 105px 7% 85px;
-  background: var(--bg);
-}
-
-.hero-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--blue);
-  margin-bottom: 25px;
-}
-
-.hero h1 {
-  font-size: clamp(48px, 7vw, 88px);
-  font-weight: 750;
-  letter-spacing: -5px;
-  line-height: 1.04;
-  margin-bottom: 28px;
-}
-
-.hero h1 span {
-  color: var(--blue);
-}
-
-.hero-description {
-  font-size: 14px;
-  color: var(--sub);
-  line-height: 1.9;
-  max-width: 490px;
-}
-
-/* CATEGORY NAVIGATION */
-
-.category-nav {
-  padding: 21px 7%;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  gap: 36px;
-  flex-wrap: wrap;
-  position: sticky;
-  top: 0;
-  background: rgba(252,252,250,0.96);
-  backdrop-filter: blur(12px);
-  z-index: 10;
-}
-
-.category-nav a {
-  font-size: 12px;
-  color: var(--sub);
-  font-weight: 600;
-  transition: 0.2s;
-}
-
-.category-nav a:hover {
-  color: var(--blue);
-}
-
-/* MAIN */
-
-main {
-  padding: 0 7%;
-}
-
-.project-section {
-  padding: 85px 0 35px;
-  scroll-margin-top: 75px;
-}
-
-.section-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 35px;
-}
-
-.section-number {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--blue);
-  letter-spacing: 1.5px;
-  margin-bottom: 8px;
-}
-
-.section-heading h2 {
-  font-size: 31px;
-  font-weight: 700;
-  letter-spacing: -1.2px;
-}
-
-.section-description {
-  font-size: 12px;
-  color: var(--sub);
-}
-
-/* PROJECT GRID */
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 55px 30px;
-}
-
-/* Graphic Design: 3 columns */
-
-.project-section[data-category="graphic"] .project-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 38px 22px;
-}
-
-/* Editorial: 3 columns */
-
-.project-section[data-category="editorial"] .project-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 38px 22px;
-}
-
-.project-card {
-  min-width: 0;
-  animation: fadeIn 0.5s ease both;
-}
-
-/* THUMBNAIL */
-
-.project-thumbnail {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  background: #f0f1f5;
-  overflow: hidden;
-  border-radius: 3px;
-  position: relative;
-  cursor: pointer;
-}
-
-.project-thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  transition: transform 0.45s ease;
-}
-
-.project-card:hover .project-thumbnail img {
-  transform: scale(1.025);
-}
-
-.thumbnail-placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--sub);
-  font-size: 13px;
-  padding: 20px;
-  text-align: center;
-  background: #f0f1f5;
-}
-
-/* OVERLAY */
-
-.thumbnail-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(32, 40, 70, 0.25);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-.project-card:hover .thumbnail-overlay {
-  opacity: 1;
-}
-
-.overlay-text {
-  background: var(--white);
-  color: var(--blue);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 11px 20px;
-  border-radius: 30px;
-}
-
-/* PROJECT INFORMATION */
-
-.project-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
-  padding-top: 18px;
-}
-
-.project-info-main {
-  min-width: 0;
-}
-
-.project-title {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 5px;
-  letter-spacing: -0.3px;
-  overflow-wrap: anywhere;
-}
-
-.project-company {
-  font-size: 12px;
-  color: var(--sub);
-}
-
-.project-year {
-  font-size: 12px;
-  color: var(--sub);
-  white-space: nowrap;
-}
-
-/* TOOLS ON PROJECT CARDS */
-
-.project-tools {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 10px;
-}
-
-.tool-tag {
-  display: inline-block;
-  padding: 4px 9px;
-  border: 1px solid var(--line);
-  border-radius: 3px;
-  color: var(--sub);
-  font-size: 10px;
-  line-height: 1.4;
-  background: var(--white);
-}
-
-/* DETAIL BUTTON */
-
-.detail-button {
-  margin-top: 13px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  color: var(--blue);
-  font-size: 12px;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  transition: 0.2s;
-}
-
-.detail-button:hover {
-  color: var(--blue-hover);
-  gap: 11px;
-}
-
-/* PAGINATION */
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin-top: 45px;
-}
-
-.pagination button {
-  width: 35px;
-  height: 35px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  background: var(--white);
-  color: var(--sub);
-  font-size: 12px;
-  transition: 0.2s;
-}
-
-.pagination button:hover:not(:disabled),
-.pagination button.active {
-  background: var(--blue);
-  border-color: var(--blue);
-  color: var(--white);
-}
-
-.pagination button:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
-
-/* VIDEO FILTER */
-
-.video-filters {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 28px;
-}
-
-.video-filter {
-  border: 1px solid var(--line);
-  background: var(--white);
-  color: var(--sub);
-  border-radius: 30px;
-  padding: 8px 18px;
-  font-size: 12px;
-  font-weight: 600;
-  transition: 0.2s;
-}
-
-.video-filter:hover,
-.video-filter.active {
-  background: var(--blue);
-  color: var(--white);
-  border-color: var(--blue);
-}
-
-/* MODAL */
-
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  background: rgba(20, 23, 32, 0.72);
-  padding: 35px 20px;
-  overflow-y: auto;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal.active {
-  display: flex;
-}
-
-.modal-content {
-  width: 100%;
-  max-width: 1000px;
-  background: var(--white);
-  border-radius: 8px;
-  padding: 35px;
-  position: relative;
-  margin: auto;
-  animation: modalIn 0.25s ease;
-}
-
-.modal-close {
-  position: absolute;
-  top: 20px;
-  right: 23px;
-  width: 35px;
-  height: 35px;
-  border: none;
-  background: var(--blue-light);
-  color: var(--blue);
-  border-radius: 50%;
-  font-size: 20px;
-  transition: 0.2s;
-}
-
-.modal-close:hover {
-  background: var(--blue);
-  color: var(--white);
-}
-
-.modal-category {
-  font-size: 10px;
-  font-weight: 750;
-  color: var(--blue);
-  letter-spacing: 1.5px;
-  margin-bottom: 10px;
-}
-
-.modal-title {
-  font-size: 25px;
-  font-weight: 750;
-  letter-spacing: -0.8px;
-  margin-bottom: 5px;
-  padding-right: 40px;
-}
-
-.modal-meta {
-  font-size: 12px;
-  color: var(--sub);
-  margin-bottom: 28px;
-}
-
-/* MODAL SECTIONS */
-
-.modal-section {
-  padding: 25px 0;
-  border-top: 1px solid var(--line);
-}
-
-.modal-section-title {
-  font-size: 12px;
-  color: var(--sub);
-  letter-spacing: 0.5px;
-  margin-bottom: 15px;
-  font-weight: 600;
-}
-
-.modal-contribution {
-  font-size: 14px;
-  line-height: 1.9;
-  color: var(--text);
-  white-space: pre-line;
-}
-
-.modal-tools {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.modal-tools .tool-tag {
-  font-size: 12px;
-  padding: 6px 12px;
-}
-
-/* MODAL IMAGE GALLERY */
-
-.modal-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.modal-image {
-  background: #f3f4f7;
-  border-radius: 3px;
-  overflow: hidden;
-  min-width: 0;
-}
-
-.modal-image img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 540px;
-  object-fit: contain;
-}
-
-/* EXTERNAL LINK */
-
-.modal-link-area {
-  margin-top: 10px;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-}
-
-.modal-link-label {
-  font-size: 12px;
-  color: var(--sub);
-}
-
-.original-link {
-  display: none;
-  padding: 10px 19px;
-  background: var(--blue);
-  color: var(--white);
-  border-radius: 30px;
-  font-size: 12px;
-  font-weight: 700;
-  transition: 0.2s;
-}
-
-.original-link.visible {
-  display: inline-flex;
-}
-
-.original-link:hover {
-  background: var(--blue-hover);
-}
-
-/* FOOTER */
-
-footer {
-  margin-top: 100px;
-  padding: 40px 7%;
-  background: #f3f4f8;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-title {
-  font-size: 13px;
-  font-weight: 750;
-}
-
-.footer-copy {
-  font-size: 11px;
-  color: var(--sub);
-}
-
-/* ANIMATIONS */
-
-@keyframes fadeIn {
-  from {
-    opacity: 1;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes modalIn {
-  from {
-    opacity: 1;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 900px) {
-  .project-section[data-category="graphic"] .project-grid,
-  .project-section[data-category="editorial"] .project-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 700px) {
-
-  header {
-    padding: 22px 6%;
-  }
-
-  .hero {
-    padding: 75px 6% 65px;
-  }
-
-  .hero h1 {
-    letter-spacing: -2.5px;
-  }
-
-  .category-nav {
-    padding: 17px 6%;
-    gap: 22px;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-  }
-
-  .category-nav a {
-    white-space: nowrap;
-  }
-
-  main {
-    padding: 0 6%;
-  }
-
-  .project-section {
-    padding-top: 65px;
-  }
-
-  .section-heading {
-    display: block;
-  }
-
-  .section-description {
-    margin-top: 8px;
-  }
-
-  .project-grid,
-  .project-section[data-category="graphic"] .project-grid,
-  .project-section[data-category="editorial"] .project-grid {
-    grid-template-columns: 1fr;
-    gap: 38px;
-  }
-
-  .video-filters {
-    flex-wrap: wrap;
-  }
-
-  .modal {
-    padding: 15px;
-    align-items: flex-start;
-  }
-
-  .modal-content {
-    padding: 25px 18px;
-    margin: auto 0;
-  }
-
-  .modal-gallery {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .modal-close {
-    top: 15px;
-    right: 13px;
-  }
-
-  .modal-title {
-    font-size: 21px;
-  }
-
-  .modal-link-area {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  footer {
-    padding: 30px 6%;
-    margin-top: 70px;
-    gap: 15px;
-    flex-wrap: wrap;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Youngseon Jung | Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #fcfcfa;
+      --white: #ffffff;
+      --text: #202126;
+      --muted: #777b85;
+      --line: #e8e9ed;
+      --blue: #3158d5;
+      --light-blue: #edf1ff;
+      --hover-blue: #2446b6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    /* Header */
+
+    header {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background: var(--bg);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .header-link {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .header-link:hover {
+      color: var(--blue);
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: 100px 0 90px;
+    }
+
+    .hero-label {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      max-width: 800px;
+      margin: 0;
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.12;
+      letter-spacing: -3px;
+      font-weight: 700;
+    }
+
+    .hero h1 span {
+      color: var(--blue);
+    }
+
+    .hero-description {
+      max-width: 560px;
+      margin-top: 25px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* Navigation */
+
+    .category-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(252, 252, 250, 0.96);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      display: flex;
+      gap: 34px;
+      overflow-x: auto;
+    }
+
+    .nav-button {
+      flex-shrink: 0;
+      padding: 20px 0;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      background: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .nav-button:hover,
+    .nav-button.active {
+      color: var(--blue);
+    }
+
+    .nav-button.active {
+      border-bottom-color: var(--blue);
+    }
+
+    /* Portfolio sections */
+
+    main {
+      padding: 70px 0 110px;
+    }
+
+    .project-section {
+      display: none;
+      margin-bottom: 90px;
+      scroll-margin-top: 90px;
+    }
+
+    .project-section.active {
+      display: block;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: 29px;
+      letter-spacing: -1px;
+    }
+
+    .section-count {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Project grid */
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 48px 30px;
+    }
+
+    .project-section[data-category="graphic"] .project-grid,
+    .project-section[data-category="editorial"] .project-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 38px 22px;
+    }
+
+    /* Project card */
+
+    .project-card {
+      min-width: 0;
+      cursor: pointer;
+    }
+
+    .project-thumbnail {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #f0f1f4;
+      border-radius: 5px;
+    }
+
+    /* Thumbnail images are always visible */
+
+    .project-thumbnail img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1;
+      visibility: visible;
+      transition: transform 0.35s ease;
+    }
+
+    .project-card:hover .project-thumbnail img {
+      transform: scale(1.035);
+    }
+
+    .thumbnail-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a0a3ab;
+      background: #f0f1f4;
+      font-size: 12px;
+      z-index: 0;
+    }
+
+    .project-thumbnail img {
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-info {
+      padding-top: 17px;
+    }
+
+    .project-title {
+      margin: 0 0 6px;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .project-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .tool-tag {
+      display: inline-block;
+      padding: 4px 9px;
+      border-radius: 3px;
+      background: var(--light-blue);
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .view-label {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* Video filters */
+
+    .video-filters {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+
+    .video-filter {
+      padding: 8px 15px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--white);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .video-filter:hover,
+    .video-filter.active {
+      border-color: var(--blue);
+      background: var(--light-blue);
+      color: var(--blue);
+    }
+
+    /* Pagination */
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 55px;
+    }
+
+    .page-button {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      background: var(--white);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .page-button.active,
+    .page-button:hover {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: white;
+    }
+
+    /* Modal */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      background: rgba(20, 22, 30, 0.65);
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-content {
+      position: relative;
+      width: min(850px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 45px;
+      border-radius: 6px;
+      background: var(--white);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      width: 35px;
+      height: 35px;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 25px;
+    }
+
+    .modal-category {
+      margin-bottom: 10px;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .modal-title {
+      margin: 0 0 10px;
+      font-size: 30px;
+      letter-spacing: -1px;
+    }
+
+    .modal-meta {
+      margin-bottom: 35px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .modal-section {
+      margin-top: 32px;
+    }
+
+    .modal-section h3 {
+      margin: 0 0 14px;
+      font-size: 14px;
+    }
+
+    .modal-section p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+
+    .modal-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .modal-gallery img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: #f3f3f3;
+      border-radius: 3px;
+    }
+
+    .modal-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .modal-link {
+      display: inline-block;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    .modal-link:hover {
+      color: var(--hover-blue);
+      text-decoration: underline;
+    }
+
+    /* Footer */
+
+    footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .loading-message,
+    .error-message {
+      padding: 50px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 800px) {
+      .container {
+        width: min(100% - 40px, 600px);
+      }
+
+      .hero {
+        padding: 75px 0 65px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .project-section[data-category="graphic"] .project-grid,
+      .project-section[data-category="editorial"] .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .modal-content {
+        padding: 35px 25px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: calc(100% - 36px);
+      }
+
+      header {
+        height: 65px;
+      }
+
+      .hero {
+        padding: 60px 0 55px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .nav-inner {
+        gap: 24px;
+      }
+
+      main {
+        padding-top: 50px;
+      }
+
+      .project-grid,
+      .project-section[data-category="graphic"] .project-grid,
+      .project-section[data-category="editorial"] .project-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .project-section[data-category="presentation"] .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading h2 {
+        font-size: 24px;
+      }
+
+      .modal {
+        padding: 12px;
+      }
+
+      .modal-content {
+        max-height: 94vh;
+        padding: 35px 20px;
+      }
+
+      .modal-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
+  <header>
+    <div class="container header-inner">
+      <a href="#" class="logo">YOUNGSEON JUNG.</a>
+      <a href="mailto:jyoungseon8@gmail.com" class="header-link">CONTACT ↗</a>
+    </div>
+  </header>
 
-<header>
-  <a href="#" class="logo">YOUNGSEON JUNG.</a>
-  <div class="header-right">HR DESIGN PORTFOLIO</div>
-</header>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-label">PORTFOLIO</div>
+      <h1>Ideas into<br><span>Visual Stories.</span></h1>
+      <p class="hero-description">
+        A collection of projects across graphic design, presentations,
+        editorial content and video production.
+      </p>
+    </div>
+  </section>
 
-<!-- HERO -->
+  <nav class="category-nav">
+    <div class="container nav-inner">
+      <button class="nav-button active" data-target="graphic">Graphic Design</button>
+      <button class="nav-button" data-target="presentation">Presentation</button>
+      <button class="nav-button" data-target="editorial">Editorial</button>
+      <button class="nav-button" data-target="video">Video</button>
+    </div>
+  </nav>
 
-<section class="hero">
-  <div class="hero-label">DESIGN ARCHIVE · 2021 — 2026</div>
-
-  <h1>
-    HR DESIGN<br>
-    <span>PORTFOLIO.</span>
-  </h1>
-
-  <p class="hero-description">
-    A collection of visual contents, presentations,
-    editorial projects and videos.<br>
-    Exploring the power of design in communication.
-  </p>
-</section>
-
-<!-- CATEGORY NAVIGATION -->
-
-<nav class="category-nav">
-  <a href="#graphic">01. Graphic Design</a>
-  <a href="#presentation">02. Presentation</a>
-  <a href="#editorial">03. Editorial</a>
-  <a href="#video">04. Video</a>
-</nav>
-
-<!-- PROJECTS -->
-
-<main id="portfolio"></main>
-
-<!-- PROJECT DETAIL MODAL -->
-
-<div class="modal" id="projectModal" role="dialog"
-     aria-modal="true" aria-labelledby="modalTitle">
-
-  <div class="modal-content">
-
-    <button class="modal-close" id="modalClose"
-            aria-label="Close">&times;</button>
-
-    <div class="modal-category" id="modalCategory"></div>
-
-    <h2 class="modal-title" id="modalTitle"></h2>
-
-    <div class="modal-meta" id="modalMeta"></div>
-
-    <div class="modal-section" id="modalImagesSection">
-      <div class="modal-section-title">PROJECT IMAGES</div>
-      <div class="modal-gallery" id="modalGallery"></div>
+  <main class="container">
+    <div id="loading" class="loading-message">Loading projects...</div>
+    <div id="error" class="error-message" hidden>
+      Projects could not be loaded. Please check projects.json.
     </div>
 
-    <div class="modal-section" id="modalContributionSection">
-      <div class="modal-section-title">MY CONTRIBUTION</div>
-      <div class="modal-contribution" id="modalContribution"></div>
-    </div>
+    <section class="project-section active" data-category="graphic">
+      <div class="section-heading">
+        <h2>Graphic Design</h2>
+        <span class="section-count" id="count-graphic"></span>
+      </div>
+      <div class="project-grid" id="grid-graphic"></div>
+      <div class="pagination" id="pagination-graphic"></div>
+    </section>
 
-    <div class="modal-section" id="modalToolsSection">
-      <div class="modal-section-title">TOOLS USED</div>
-      <div class="modal-tools" id="modalTools"></div>
-    </div>
+    <section class="project-section" data-category="presentation">
+      <div class="section-heading">
+        <h2>Presentation</h2>
+        <span class="section-count" id="count-presentation"></span>
+      </div>
+      <div class="project-grid" id="grid-presentation"></div>
+    </section>
 
-    <div class="modal-link-area" id="modalLinkArea">
-      <span class="modal-link-label">PROJECT REFERENCE</span>
+    <section class="project-section" data-category="editorial">
+      <div class="section-heading">
+        <h2>Editorial</h2>
+        <span class="section-count" id="count-editorial"></span>
+      </div>
+      <div class="project-grid" id="grid-editorial"></div>
+    </section>
 
-      <a class="original-link" id="modalLink"
-         href="#" target="_blank"
-         rel="noopener noreferrer">
-        View Original ↗
-      </a>
-    </div>
-
-  </div>
-</div>
-
-<!-- FOOTER -->
-
-<footer>
-  <div class="footer-title">YOUNGSEON JUNG.</div>
-  <div class="footer-copy">
-    © 2026 YOUNGSEON JUNG. ALL RIGHTS RESERVED.
-  </div>
-</footer>
-
-
-<script>
-
-/* =====================================
-   1. LOAD PROJECT DATA
-===================================== */
-
-const portfolio = document.getElementById("portfolio");
-
-let projects = [];
-let graphicPage = 1;
-const GRAPHIC_PAGE_SIZE = 9;
-
-let videoFilter = "all";
-
-/* CATEGORY SETTINGS */
-
-const categories = [
-  {
-    id: "graphic",
-    number: "01",
-    title: "Graphic Design",
-    description: "Card News · Poster"
-  },
-  {
-    id: "presentation",
-    number: "02",
-    title: "Presentation",
-    description: "PowerPoint · PPT"
-  },
-  {
-    id: "editorial",
-    number: "03",
-    title: "Editorial",
-    description: "Newsletter · Magazine"
-  },
-  {
-    id: "video",
-    number: "04",
-    title: "Video",
-    description: "Short-form · Long-form"
-  }
-];
-
-
-/* =====================================
-   2. HELPER FUNCTIONS
-===================================== */
-
-function escapeHTML(value = "") {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  })[char]);
-}
-
-function normalizeTools(tools) {
-  if (Array.isArray(tools)) {
-    return tools.filter(Boolean);
-  }
-
-  if (typeof tools === "string") {
-    return tools.split(",").map(item => item.trim()).filter(Boolean);
-  }
-
-  return [];
-}
-
-function renderTools(tools) {
-  const normalized = normalizeTools(tools);
-
-  if (!normalized.length) return "";
-
-  return `
-    <div class="project-tools">
-      ${normalized.map(tool => `
-        <span class="tool-tag">${escapeHTML(tool)}</span>
-      `).join("")}
-    </div>
-  `;
-}
-
-
-/* =====================================
-   3. PROJECT CARD TEMPLATE
-===================================== */
-
-function createProjectCard(project, categoryId, index) {
-
-  const cover = project.images?.[0] || "";
-  const tools = renderTools(project.tools);
-
-  return `
-    <article class="project-card">
-
-      <div class="project-thumbnail"
-           data-category="${escapeHTML(categoryId)}"
-           data-index="${index}"
-           role="button"
-           tabindex="0"
-           aria-label="View ${escapeHTML(project.title)} details">
-
-        <div class="thumbnail-placeholder">
-          ${escapeHTML(project.title || "Project")}
-        </div>
-
-        ${cover ? `
-          <img
-            src="${escapeHTML(cover)}"
-            alt="${escapeHTML(project.title || "")}"
-            loading="lazy"
-            onerror="this.style.display='none'"
-          >
-        ` : ""}
-
-        <div class="thumbnail-overlay">
-          <span class="overlay-text">View Details ↗</span>
-        </div>
-
+    <section class="project-section" data-category="video">
+      <div class="section-heading">
+        <h2>Video</h2>
+        <span class="section-count" id="count-video"></span>
       </div>
 
-      <div class="project-info">
+      <div class="video-filters">
+        <button class="video-filter active" data-filter="all">All</button>
+        <button class="video-filter" data-filter="short-form">Short-form</button>
+        <button class="video-filter" data-filter="long-form">Long-form</button>
+      </div>
 
-        <div class="project-info-main">
+      <div class="project-grid" id="grid-video"></div>
+    </section>
+  </main>
 
-          <div class="project-title">
-            ${escapeHTML(project.title || "")}
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Youngseon Jung. All rights reserved.</span>
+      <span>Designed and developed by Youngseon Jung.</span>
+    </div>
+  </footer>
+
+  <!-- Project Detail Modal -->
+
+  <div class="modal" id="project-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close" aria-label="Close">×</button>
+
+      <div class="modal-category" id="modal-category"></div>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <div class="modal-meta" id="modal-meta"></div>
+
+      <div class="modal-section">
+        <h3>Project Images</h3>
+        <div class="modal-gallery" id="modal-gallery"></div>
+      </div>
+
+      <div class="modal-section" id="contribution-section">
+        <h3>My Contribution</h3>
+        <p id="modal-contribution"></p>
+      </div>
+
+      <div class="modal-section" id="tools-section">
+        <h3>Tools Used</h3>
+        <div class="modal-tools" id="modal-tools"></div>
+      </div>
+
+      <div class="modal-section" id="reference-section">
+        <h3>Project Reference</h3>
+        <a class="modal-link" id="modal-link" href="#" target="_blank" rel="noopener noreferrer">
+          View Project ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const PROJECTS_PER_PAGE = 9;
+
+    const categoryNames = {
+      graphic: "Graphic Design",
+      presentation: "Presentation",
+      editorial: "Editorial",
+      video: "Video"
+    };
+
+    let projects = [];
+    let currentPage = 1;
+    let currentVideoFilter = "all";
+
+    const modal = document.getElementById("project-modal");
+
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, function(char) {
+        return {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#039;"
+        }[char];
+      });
+    }
+
+    function getProjectThumbnail(project) {
+      return project.images && project.images.length
+        ? project.images[0]
+        : "";
+    }
+
+    function createProjectCard(project, index) {
+      const thumbnail = getProjectThumbnail(project);
+      const tools = Array.isArray(project.tools) ? project.tools : [];
+
+      const imageHTML = thumbnail
+        ? `<img src="${escapeHTML(thumbnail)}"
+                alt="${escapeHTML(project.title)}"
+                loading="eager"
+                onerror="this.style.display='none';">`
+        : "";
+
+      const toolsHTML = tools.length
+        ? `<div class="project-tools">
+            ${tools.map(tool =>
+              `<span class="tool-tag">${escapeHTML(tool)}</span>`
+            ).join("")}
+          </div>`
+        : "";
+
+      return `
+        <article class="project-card" data-project-id="${escapeHTML(project.id)}">
+          <div class="project-thumbnail">
+            <div class="thumbnail-placeholder">Image unavailable</div>
+            ${imageHTML}
           </div>
 
-          <div class="project-company">
-            ${escapeHTML(project.organization || "")}
+          <div class="project-info">
+            <h3 class="project-title">${escapeHTML(project.title)}</h3>
+
+            <div class="project-meta">
+              <span>${escapeHTML(project.organization)}</span>
+              <span>·</span>
+              <span>${escapeHTML(project.year)}</span>
+            </div>
+
+            ${toolsHTML}
+
+            <span class="view-label">VIEW DETAILS ↗</span>
           </div>
+        </article>
+      `;
+    }
 
-          ${tools}
+    function renderGraphic() {
+      const graphicProjects = projects.filter(
+        project => project.category === "graphic"
+      );
 
-          <button
-            class="detail-button"
-            data-category="${escapeHTML(categoryId)}"
-            data-index="${index}"
-          >
-            View Details <span>↗</span>
+      const totalPages = Math.ceil(
+        graphicProjects.length / PROJECTS_PER_PAGE
+      );
+
+      const start = (currentPage - 1) * PROJECTS_PER_PAGE;
+      const visibleProjects = graphicProjects.slice(
+        start,
+        start + PROJECTS_PER_PAGE
+      );
+
+      document.getElementById("grid-graphic").innerHTML =
+        visibleProjects.map(createProjectCard).join("");
+
+      document.getElementById("count-graphic").textContent =
+        `${graphicProjects.length} Projects`;
+
+      const pagination = document.getElementById("pagination-graphic");
+
+      if (totalPages <= 1) {
+        pagination.innerHTML = "";
+        return;
+      }
+
+      pagination.innerHTML = Array.from(
+        { length: totalPages },
+        (_, index) => `
+          <button class="page-button ${currentPage === index + 1 ? "active" : ""}"
+                  data-page="${index + 1}">
+            ${index + 1}
           </button>
+        `
+      ).join("");
+    }
 
-        </div>
+    function renderCategory(category) {
+      if (category === "graphic") {
+        renderGraphic();
+        return;
+      }
 
-        <div class="project-year">
-          ${escapeHTML(project.year || "")}
-        </div>
-
-      </div>
-
-    </article>
-  `;
-}
-
-
-/* =====================================
-   4. RENDER PORTFOLIO
-===================================== */
-
-function renderPortfolio() {
-
-  portfolio.innerHTML = "";
-
-  categories.forEach(category => {
-
-    const categoryProjects = projects.filter(
-      project => project.category === category.id
-    );
-
-    if (!categoryProjects.length) return;
-
-    const section = document.createElement("section");
-
-    section.className = "project-section";
-    section.id = category.id;
-    section.dataset.category = category.id;
-
-    let visibleProjects = categoryProjects;
-
-    /* GRAPHIC DESIGN PAGINATION */
-
-    let paginationHTML = "";
-
-    if (category.id === "graphic") {
-
-      const pageCount = Math.ceil(
-        categoryProjects.length / GRAPHIC_PAGE_SIZE
+      let categoryProjects = projects.filter(
+        project => project.category === category
       );
 
-      graphicPage = Math.min(graphicPage, Math.max(pageCount, 1));
+      if (category === "video" && currentVideoFilter !== "all") {
+        categoryProjects = categoryProjects.filter(
+          project => project.videoType === currentVideoFilter
+        );
+      }
 
-      visibleProjects = categoryProjects.slice(
-        (graphicPage - 1) * GRAPHIC_PAGE_SIZE,
-        graphicPage * GRAPHIC_PAGE_SIZE
+      document.getElementById(`grid-${category}`).innerHTML =
+        categoryProjects.map(createProjectCard).join("");
+
+      document.getElementById(`count-${category}`).textContent =
+        `${categoryProjects.length} Projects`;
+    }
+
+    function renderAll() {
+      renderCategory("graphic");
+      renderCategory("presentation");
+      renderCategory("editorial");
+      renderCategory("video");
+    }
+
+    function openModal(project) {
+      document.getElementById("modal-category").textContent =
+        categoryNames[project.category] || project.category;
+
+      document.getElementById("modal-title").textContent = project.title;
+
+      document.getElementById("modal-meta").textContent =
+        `${project.organization || ""} · ${project.year || ""}`;
+
+      const gallery = document.getElementById("modal-gallery");
+      const images = Array.isArray(project.images) ? project.images : [];
+
+      gallery.innerHTML = images.map(image => `
+        <img src="${escapeHTML(image)}"
+             alt="${escapeHTML(project.title)}"
+             loading="lazy"
+             onerror="this.style.display='none';">
+      `).join("");
+
+      const contributionSection =
+        document.getElementById("contribution-section");
+
+      document.getElementById("modal-contribution").textContent =
+        project.contribution || "";
+
+      contributionSection.style.display =
+        project.contribution ? "block" : "none";
+
+      const tools = Array.isArray(project.tools) ? project.tools : [];
+      const toolsSection = document.getElementById("tools-section");
+
+      document.getElementById("modal-tools").innerHTML =
+        tools.map(tool =>
+          `<span class="tool-tag">${escapeHTML(tool)}</span>`
+        ).join("");
+
+      toolsSection.style.display = tools.length ? "block" : "none";
+
+      const referenceSection =
+        document.getElementById("reference-section");
+
+      const modalLink = document.getElementById("modal-link");
+
+      if (project.link) {
+        modalLink.href = project.link;
+        referenceSection.style.display = "block";
+      } else {
+        modalLink.removeAttribute("href");
+        referenceSection.style.display = "none";
+      }
+
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      modal.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    /* Category navigation */
+
+    document.querySelectorAll(".nav-button").forEach(button => {
+      button.addEventListener("click", () => {
+        const target = button.dataset.target;
+
+        document.querySelectorAll(".nav-button").forEach(item => {
+          item.classList.remove("active");
+        });
+
+        document.querySelectorAll(".project-section").forEach(section => {
+          section.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        document.querySelector(
+          `.project-section[data-category="${target}"]`
+        ).classList.add("active");
+      });
+    });
+
+    /* Project card click */
+
+    document.addEventListener("click", event => {
+      const card = event.target.closest(".project-card");
+
+      if (!card) return;
+
+      const project = projects.find(
+        item => String(item.id) === card.dataset.projectId
       );
 
-      if (pageCount > 1) {
+      if (project) openModal(project);
+    });
 
-        paginationHTML = `
-          <div class="pagination" aria-label="Graphic Design pages">
+    /* Graphic pagination */
 
-            <button
-              data-page="${graphicPage - 1}"
-              ${graphicPage === 1 ? "disabled" : ""}
-              aria-label="Previous page"
-            >‹</button>
+    document.getElementById("pagination-graphic")
+      .addEventListener("click", event => {
+        const button = event.target.closest("[data-page]");
 
-            ${Array.from({ length: pageCount }, (_, i) => i + 1)
-              .map(page => `
-                <button
-                  data-page="${page}"
-                  class="${page === graphicPage ? "active" : ""}"
-                  aria-label="Page ${page}"
-                >
-                  ${page}
-                </button>
-              `).join("")}
+        if (!button) return;
 
-            <button
-              data-page="${graphicPage + 1}"
-              ${graphicPage === pageCount ? "disabled" : ""}
-              aria-label="Next page"
-            >›</button>
+        currentPage = Number(button.dataset.page);
+        renderGraphic();
+      });
 
-          </div>
-        `;
+    /* Video filters */
+
+    document.querySelectorAll(".video-filter").forEach(button => {
+      button.addEventListener("click", () => {
+        currentVideoFilter = button.dataset.filter;
+
+        document.querySelectorAll(".video-filter").forEach(item => {
+          item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        renderCategory("video");
+      });
+    });
+
+    /* Modal controls */
+
+    document.getElementById("modal-close")
+      .addEventListener("click", closeModal);
+
+    modal.addEventListener("click", event => {
+      if (event.target === modal) closeModal();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeModal();
+    });
+
+    /* Load project data */
+
+    async function loadProjects() {
+      try {
+        const response = await fetch("./projects.json");
+
+        if (!response.ok) {
+          throw new Error("Could not load projects.json");
+        }
+
+        const data = await response.json();
+
+        if (!Array.isArray(data)) {
+          throw new Error("projects.json must contain an array");
+        }
+
+        projects = data;
+
+        document.getElementById("loading").hidden = true;
+        renderAll();
+
+      } catch (error) {
+        console.error(error);
+
+        document.getElementById("loading").hidden = true;
+        document.getElementById("error").hidden = false;
       }
     }
 
-    /* VIDEO FILTER */
-
-    if (category.id === "video") {
-
-      visibleProjects = videoFilter === "all"
-        ? categoryProjects
-        : categoryProjects.filter(
-            project => project.videoType === videoFilter
-          );
-    }
-
-    /* SECTION HEADING */
-
-    const videoFilterHTML = category.id === "video" ? `
-      <div class="video-filters">
-
-        <button
-          class="video-filter ${videoFilter === "short-form" ? "active" : ""}"
-          data-video-filter="short-form"
-        >
-          Short-form
-        </button>
-
-        <button
-          class="video-filter ${videoFilter === "long-form" ? "active" : ""}"
-          data-video-filter="long-form"
-        >
-          Long-form
-        </button>
-
-      </div>
-    ` : "";
-
-    const videoAllButton = category.id === "video" ? `
-      <button
-        class="video-filter ${videoFilter === "all" ? "active" : ""}"
-        data-video-filter="all"
-      >
-        All
-      </button>
-    ` : "";
-
-    section.innerHTML = `
-
-      <div class="section-heading">
-
-        <div>
-          <div class="section-number">
-            ${category.number} / PROJECTS
-          </div>
-
-          <h2>${escapeHTML(category.title)}</h2>
-        </div>
-
-        <div class="section-description">
-          ${escapeHTML(category.description)}
-        </div>
-
-      </div>
-
-      ${category.id === "video" ? `
-        <div class="video-filters">
-          ${videoAllButton}
-          <button
-            class="video-filter ${videoFilter === "short-form" ? "active" : ""}"
-            data-video-filter="short-form"
-          >
-            Short-form
-          </button>
-          <button
-            class="video-filter ${videoFilter === "long-form" ? "active" : ""}"
-            data-video-filter="long-form"
-          >
-            Long-form
-          </button>
-        </div>
-      ` : ""}
-
-      <div class="project-grid">
-
-        ${visibleProjects.map(project => {
-
-          const globalIndex = categoryProjects.indexOf(project);
-
-          return createProjectCard(
-            project,
-            category.id,
-            globalIndex
-          );
-
-        }).join("")}
-
-      </div>
-
-      ${paginationHTML}
-
-    `;
-
-    portfolio.appendChild(section);
-
-  });
-}
-
-
-/* =====================================
-   5. MODAL ELEMENTS
-===================================== */
-
-const modal = document.getElementById("projectModal");
-const modalClose = document.getElementById("modalClose");
-
-const modalCategory = document.getElementById("modalCategory");
-const modalTitle = document.getElementById("modalTitle");
-const modalMeta = document.getElementById("modalMeta");
-
-const modalGallery = document.getElementById("modalGallery");
-const modalContribution = document.getElementById("modalContribution");
-const modalTools = document.getElementById("modalTools");
-
-const modalImagesSection = document.getElementById("modalImagesSection");
-const modalContributionSection = document.getElementById("modalContributionSection");
-const modalToolsSection = document.getElementById("modalToolsSection");
-
-const modalLink = document.getElementById("modalLink");
-const modalLinkArea = document.getElementById("modalLinkArea");
-
-
-/* =====================================
-   6. OPEN PROJECT DETAILS
-===================================== */
-
-function openProject(categoryId, index) {
-
-  const categoryProjects = projects.filter(
-    project => project.category === categoryId
-  );
-
-  const project = categoryProjects[index];
-
-  if (!project) return;
-
-  modalCategory.textContent =
-    categoryId.toUpperCase() + " / PROJECT DETAILS";
-
-  modalTitle.textContent = project.title || "";
-
-  modalMeta.textContent =
-    `${project.organization || ""}  ·  ${project.year || ""}`;
-
-
-  /* PROJECT IMAGES */
-
-  modalGallery.innerHTML = "";
-
-  const images = project.images || [];
-
-  images.forEach(imagePath => {
-
-    const imageContainer = document.createElement("div");
-    imageContainer.className = "modal-image";
-
-    const image = document.createElement("img");
-
-    image.src = imagePath;
-    image.alt = project.title || "Project image";
-    image.loading = "lazy";
-
-    imageContainer.appendChild(image);
-    modalGallery.appendChild(imageContainer);
-
-  });
-
-  modalImagesSection.style.display =
-    images.length ? "" : "none";
-
-
-  /* CONTRIBUTION */
-
-  const contribution = project.contribution || "";
-
-  modalContribution.textContent = contribution;
-
-  modalContributionSection.style.display =
-    contribution.trim() ? "" : "none";
-
-
-  /* TOOLS */
-
-  const tools = normalizeTools(project.tools);
-
-  modalTools.innerHTML = tools.map(tool => `
-    <span class="tool-tag">${escapeHTML(tool)}</span>
-  `).join("");
-
-  modalToolsSection.style.display =
-    tools.length ? "" : "none";
-
-
-  /* EXTERNAL LINK */
-
-  if (project.link && project.link.trim() !== "") {
-
-    modalLink.href = project.link;
-    modalLink.classList.add("visible");
-    modalLinkArea.style.display = "flex";
-
-  } else {
-
-    modalLink.href = "#";
-    modalLink.classList.remove("visible");
-    modalLinkArea.style.display = "none";
-
-  }
-
-  modal.classList.add("active");
-  document.body.classList.add("modal-open");
-
-  modalClose.focus();
-
-}
-
-
-/* =====================================
-   7. CLOSE MODAL
-===================================== */
-
-function closeModal() {
-
-  modal.classList.remove("active");
-  document.body.classList.remove("modal-open");
-
-}
-
-modalClose.addEventListener("click", closeModal);
-
-modal.addEventListener("click", event => {
-
-  if (event.target === modal) {
-    closeModal();
-  }
-
-});
-
-document.addEventListener("keydown", event => {
-
-  if (event.key === "Escape" && modal.classList.contains("active")) {
-    closeModal();
-  }
-
-});
-
-
-/* =====================================
-   8. PORTFOLIO INTERACTIONS
-===================================== */
-
-portfolio.addEventListener("click", event => {
-
-  /* PROJECT DETAILS BUTTON */
-
-  const detailButton = event.target.closest(".detail-button");
-
-  if (detailButton) {
-
-    openProject(
-      detailButton.dataset.category,
-      Number(detailButton.dataset.index)
-    );
-
-    return;
-  }
-
-
-  /* PROJECT THUMBNAIL */
-
-  const thumbnail = event.target.closest(".project-thumbnail");
-
-  if (thumbnail) {
-
-    openProject(
-      thumbnail.dataset.category,
-      Number(thumbnail.dataset.index)
-    );
-
-    return;
-  }
-
-
-  /* GRAPHIC PAGINATION */
-
-  const pageButton = event.target.closest("[data-page]");
-
-  if (pageButton && !pageButton.disabled) {
-
-    graphicPage = Number(pageButton.dataset.page);
-
-    renderPortfolio();
-
-    document.getElementById("graphic").scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-
-    return;
-  }
-
-
-  /* VIDEO FILTER */
-
-  const videoButton = event.target.closest("[data-video-filter]");
-
-  if (videoButton) {
-
-    videoFilter = videoButton.dataset.videoFilter;
-
-    renderPortfolio();
-
-    document.getElementById("video").scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-
-  }
-
-});
-
-
-/* KEYBOARD ACCESSIBILITY */
-
-portfolio.addEventListener("keydown", event => {
-
-  const thumbnail = event.target.closest(".project-thumbnail");
-
-  if (
-    thumbnail &&
-    (event.key === "Enter" || event.key === " ")
-  ) {
-
-    event.preventDefault();
-
-    openProject(
-      thumbnail.dataset.category,
-      Number(thumbnail.dataset.index)
-    );
-
-  }
-
-});
-
-
-/* =====================================
-   9. LOAD PROJECTS.JSON
-===================================== */
-
-async function loadProjects() {
-
-  try {
-
-    const response = await fetch("./projects.json");
-
-    if (!response.ok) {
-      throw new Error("projects.json could not be loaded");
-    }
-
-    const data = await response.json();
-
-    projects = Array.isArray(data)
-      ? data
-      : (data.projects || []);
-
-    if (!Array.isArray(projects)) {
-      throw new Error("Invalid projects data format");
-    }
-
-    renderPortfolio();
-
-  } catch (error) {
-
-    console.error(error);
-
-    portfolio.innerHTML = `
-      <p style="padding:40px 0;color:#777b85;">
-        Projects could not be loaded.
-        Please check projects.json.
-      </p>
-    `;
-
-  }
-
-}
-
-
-/* START */
-
-loadProjects();
-
-</script>
+    loadProjects();
+  </script>
 
 </body>
 </html>
