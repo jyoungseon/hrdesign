@@ -87,21 +87,21 @@
       "link": ""
     },
     {
-      "id": "video-01",
-      "category": "video",
-      "title": "Barrier-free Campaign",
-      "organization": "University of Edinburgh",
-      "year": "2025",
-      "images": [
-        "images/video-01.jpg"
-      ],
-      "contribution": "",
-      "tools": [],
-      "link": "https://youtube.com/"
+  "id": "video-01",
+  "category": "video",
+  "videoType": "long-form",
+  "title": "Barrier-free Campaign",
+  "organization": "University of Edinburgh",
+  "year": "2025",
+  "images": ["images/video-01.jpg"],
+  "contribution": "",
+  "tools": [],
+  "link": ""
     },
     {
       "id": "video-02",
       "category": "video",
+        "videoType": "short-form",
       "title": "Fact-checking Video",
       "organization": "Korea Press Foundation",
       "year": "2022",
