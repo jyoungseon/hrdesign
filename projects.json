@@ -14,7 +14,7 @@
         "images/대검 1-4.png"
       ],
       "contribution": "콘텐츠 기획, 자료 조사, 페이지별 디자인 및 편집",
-      "tools": ["Canva"],
+      "tools": ["Photoshop", "Canva"],
       "link": "https://blog.naver.com/pro_to_u/223205152174"
     },
        {
@@ -192,6 +192,18 @@
   "tools": ["Premiere Pro"],
   "link": "https://youtu.be/H2008i294bk?si=x780tI2hoIc9jT_o"
     },
+        {
+  "id": "video-02",
+  "category": "video",
+  "videoType": "long-form",
+  "title": "Fan-made Video Edit",
+  "organization": "Personal Project",
+  "year": "2023",
+  "images": ["images/김규빈.jpg"],
+  "contribution": "영상 기획 및 스토리보드 구성, 영상 편집",
+  "tools": ["Premiere Pro"],
+  "link": "https://youtu.be/H2008i294bk?si=x780tI2hoIc9jT_o"
+    },
     {
       "id": "video-02",
       "category": "video",
@@ -226,7 +238,7 @@
         "videoType": "short-form",
       "title": "Reporter",
       "organization": "Supreme Prosecutors' Office",
-      "year": "2022",
+      "year": "2023",
       "images": [
         "images/대검영상.jpg"
       ],
