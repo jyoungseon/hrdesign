@@ -148,7 +148,6 @@ main { padding: 0 7%; }
 
 /* Graphic Design: three columns */
 .project-section[data-category="graphic"] .project-grid {
-  .project-section[data-category="editorial"] .project-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 38px 22px;
 }
@@ -625,9 +624,7 @@ function renderPortfolio() {
     section.id = category.id;
     section.dataset.category = category.id;
 
-    const isThreeColumn = ["graphic", "editorial"].includes(category.id);
 const isGraphic = category.id === "graphic";
-
 const pageCount = isGraphic
       ? Math.ceil(categoryProjects.length / GRAPHIC_PAGE_SIZE)
       : 1;
