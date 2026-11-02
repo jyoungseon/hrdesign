@@ -113,28 +113,44 @@
     {
       "id": "editorial-01",
       "category": "editorial",
-      "title": "University Newsletter",
-      "organization": "Ewha Womans University",
-      "year": "2022",
+      "title": "Reporter",
+      "organization": "Melon",
+      "year": "2021",
       "images": [
-        "images/editorial-01.jpg"
+        "images/멜론 1-1.jpg",
+        "images/멜론 1-2.jpg",
       ],
-      "contribution": "",
-      "tools": [],
-      "link": ""
+      "contribution": "기사 기획, 원고 작성 및 콘텐츠 디자인",
+      "tools": ["Photoshop", "Illustrator"],
+      "link": "https://www.melon.com/musicstory/inform.htm?mstorySeq=11977"
     },
-    {
+       {
       "id": "editorial-02",
       "category": "editorial",
-      "title": "Magazine Project",
-      "organization": "Personal Project",
-      "year": "2023",
+      "title": "Reporter",
+      "organization": "Melon",
+      "year": "2022",
       "images": [
-        "images/editorial-02.jpg"
+        "images/멜론 2-1.jpg",
+        "images/멜론 2-2.jpg",
       ],
-      "contribution": "",
-      "tools": [],
-      "link": ""
+      "contribution": "기사 기획, 원고 작성 및 콘텐츠 디자인",
+      "tools": ["Photoshop", "Illustrator"],
+      "link": "https://www.melon.com/musicstory/inform.htm?mstorySeq=12052"
+    },
+      {
+      "id": "editorial-03",
+      "category": "editorial",
+      "title": "Reporter",
+      "organization": "Melon",
+      "year": "2022",
+      "images": [
+        "images/멜론 3-1.jpg",
+        "images/멜론 3-2.jpg",
+      ],
+      "contribution": "기사 기획, 원고 작성 및 콘텐츠 디자인",
+      "tools": ["Photoshop", "Illustrator"],
+      "link": "https://www.melon.com/musicstory/inform.htm?mstorySeq=12099"
     },
     {
   "id": "video-01",
