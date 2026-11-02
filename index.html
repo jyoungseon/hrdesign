@@ -18,22 +18,40 @@
   --blue-hover: #2446b6;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont,
+    "Helvetica Neue", Arial, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
-body.modal-open { overflow: hidden; }
+body.modal-open {
+  overflow: hidden;
+}
 
-a { color: inherit; text-decoration: none; }
-button { font: inherit; cursor: pointer; }
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* HEADER */
 
 header {
   padding: 25px 7%;
@@ -47,7 +65,7 @@ header {
 .logo {
   font-size: 15px;
   font-weight: 750;
-  letter-spacing: -.5px;
+  letter-spacing: -0.5px;
 }
 
 .header-right {
@@ -57,7 +75,12 @@ header {
   letter-spacing: 1.5px;
 }
 
-.hero { padding: 105px 7% 85px; }
+/* HERO */
+
+.hero {
+  padding: 105px 7% 85px;
+  background: var(--bg);
+}
 
 .hero-label {
   font-size: 11px;
@@ -75,7 +98,9 @@ header {
   margin-bottom: 28px;
 }
 
-.hero h1 span { color: var(--blue); }
+.hero h1 span {
+  color: var(--blue);
+}
 
 .hero-description {
   font-size: 14px;
@@ -83,6 +108,8 @@ header {
   line-height: 1.9;
   max-width: 490px;
 }
+
+/* CATEGORY NAVIGATION */
 
 .category-nav {
   padding: 21px 7%;
@@ -93,7 +120,7 @@ header {
   flex-wrap: wrap;
   position: sticky;
   top: 0;
-  background: rgba(252,252,250,.96);
+  background: rgba(252,252,250,0.96);
   backdrop-filter: blur(12px);
   z-index: 10;
 }
@@ -102,12 +129,18 @@ header {
   font-size: 12px;
   color: var(--sub);
   font-weight: 600;
-  transition: .2s;
+  transition: 0.2s;
 }
 
-.category-nav a:hover { color: var(--blue); }
+.category-nav a:hover {
+  color: var(--blue);
+}
 
-main { padding: 0 7%; }
+/* MAIN */
+
+main {
+  padding: 0 7%;
+}
 
 .project-section {
   padding: 85px 0 35px;
@@ -140,22 +173,34 @@ main { padding: 0 7%; }
   color: var(--sub);
 }
 
+/* PROJECT GRID */
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 55px 30px;
 }
 
-/* Graphic Design: three columns */
+/* Graphic Design: 3 columns */
+
 .project-section[data-category="graphic"] .project-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 38px 22px;
+}
+
+/* Editorial: 3 columns */
+
+.project-section[data-category="editorial"] .project-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 38px 22px;
 }
 
 .project-card {
   min-width: 0;
-  animation: fadeIn .5s ease both;
+  animation: fadeIn 0.5s ease both;
 }
+
+/* THUMBNAIL */
 
 .project-thumbnail {
   width: 100%;
@@ -172,37 +217,42 @@ main { padding: 0 7%; }
   height: 100%;
   object-fit: contain;
   display: block;
-  transition: transform .45s ease;
-}
-
-.thumbnail-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  color: var(--sub);
-  font-size: 12px;
-  text-align: center;
+  transition: transform 0.45s ease;
 }
 
 .project-card:hover .project-thumbnail img {
   transform: scale(1.025);
 }
 
+.thumbnail-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--sub);
+  font-size: 13px;
+  padding: 20px;
+  text-align: center;
+  background: #f0f1f5;
+}
+
+/* OVERLAY */
+
 .thumbnail-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(32,40,70,.25);
+  background: rgba(32, 40, 70, 0.25);
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 0;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
 }
 
-.project-card:hover .thumbnail-overlay { opacity: 1; }
+.project-card:hover .thumbnail-overlay {
+  opacity: 1;
+}
 
 .overlay-text {
   background: var(--white);
@@ -213,6 +263,8 @@ main { padding: 0 7%; }
   border-radius: 30px;
 }
 
+/* PROJECT INFORMATION */
+
 .project-info {
   display: flex;
   justify-content: space-between;
@@ -221,11 +273,16 @@ main { padding: 0 7%; }
   padding-top: 18px;
 }
 
+.project-info-main {
+  min-width: 0;
+}
+
 .project-title {
   font-size: 15px;
   font-weight: 700;
   margin-bottom: 5px;
-  letter-spacing: -.3px;
+  letter-spacing: -0.3px;
+  overflow-wrap: anywhere;
 }
 
 .project-company {
@@ -239,6 +296,28 @@ main { padding: 0 7%; }
   white-space: nowrap;
 }
 
+/* TOOLS ON PROJECT CARDS */
+
+.project-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.tool-tag {
+  display: inline-block;
+  padding: 4px 9px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  color: var(--sub);
+  font-size: 10px;
+  line-height: 1.4;
+  background: var(--white);
+}
+
+/* DETAIL BUTTON */
+
 .detail-button {
   margin-top: 13px;
   padding: 0;
@@ -250,7 +329,7 @@ main { padding: 0 7%; }
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .detail-button:hover {
@@ -258,52 +337,82 @@ main { padding: 0 7%; }
   gap: 11px;
 }
 
-/* Pagination */
+/* PAGINATION */
+
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  margin-top: 38px;
+  margin-top: 45px;
 }
 
 .pagination button {
-  min-width: 34px;
-  height: 34px;
-  padding: 0 10px;
+  width: 35px;
+  height: 35px;
   border: 1px solid var(--line);
-  border-radius: 4px;
+  border-radius: 50%;
   background: var(--white);
   color: var(--sub);
   font-size: 12px;
+  transition: 0.2s;
 }
 
-.pagination button.active,
-.pagination button:hover:not(:disabled) {
-  border-color: var(--blue);
+.pagination button:hover:not(:disabled),
+.pagination button.active {
   background: var(--blue);
+  border-color: var(--blue);
   color: var(--white);
 }
 
 .pagination button:disabled {
-  opacity: .35;
-  cursor: not-allowed;
+  opacity: 0.3;
+  cursor: default;
 }
 
-/* Modal */
+/* VIDEO FILTER */
+
+.video-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.video-filter {
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--sub);
+  border-radius: 30px;
+  padding: 8px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.video-filter:hover,
+.video-filter.active {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+}
+
+/* MODAL */
+
 .modal {
   display: none;
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: rgba(20,23,32,.72);
+  background: rgba(20, 23, 32, 0.72);
   padding: 35px 20px;
   overflow-y: auto;
   justify-content: center;
   align-items: center;
 }
 
-.modal.active { display: flex; }
+.modal.active {
+  display: flex;
+}
 
 .modal-content {
   width: 100%;
@@ -313,7 +422,7 @@ main { padding: 0 7%; }
   padding: 35px;
   position: relative;
   margin: auto;
-  animation: modalIn .25s ease;
+  animation: modalIn 0.25s ease;
 }
 
 .modal-close {
@@ -327,7 +436,7 @@ main { padding: 0 7%; }
   color: var(--blue);
   border-radius: 50%;
   font-size: 20px;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .modal-close:hover {
@@ -346,7 +455,7 @@ main { padding: 0 7%; }
 .modal-title {
   font-size: 25px;
   font-weight: 750;
-  letter-spacing: -.8px;
+  letter-spacing: -0.8px;
   margin-bottom: 5px;
   padding-right: 40px;
 }
@@ -356,6 +465,41 @@ main { padding: 0 7%; }
   color: var(--sub);
   margin-bottom: 28px;
 }
+
+/* MODAL SECTIONS */
+
+.modal-section {
+  padding: 25px 0;
+  border-top: 1px solid var(--line);
+}
+
+.modal-section-title {
+  font-size: 12px;
+  color: var(--sub);
+  letter-spacing: 0.5px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.modal-contribution {
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--text);
+  white-space: pre-line;
+}
+
+.modal-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.modal-tools .tool-tag {
+  font-size: 12px;
+  padding: 6px 12px;
+}
+
+/* MODAL IMAGE GALLERY */
 
 .modal-gallery {
   display: grid;
@@ -378,53 +522,16 @@ main { padding: 0 7%; }
   object-fit: contain;
 }
 
-.modal-details {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
-  margin-top: 25px;
-  padding-top: 22px;
-  border-top: 1px solid var(--line);
-}
-
-.modal-detail h3 {
-  color: var(--blue);
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.modal-detail p {
-  color: var(--sub);
-  font-size: 13px;
-  line-height: 1.8;
-  white-space: pre-line;
-}
-
-.modal-tools {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-}
-
-.tool-tag {
-  display: inline-block;
-  padding: 5px 10px;
-  border-radius: 20px;
-  background: var(--blue-light);
-  color: var(--blue);
-  font-size: 11px;
-  font-weight: 650;
-}
+/* EXTERNAL LINK */
 
 .modal-link-area {
-  margin-top: 28px;
+  margin-top: 10px;
   padding-top: 20px;
   border-top: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 15px;
 }
 
 .modal-link-label {
@@ -440,11 +547,18 @@ main { padding: 0 7%; }
   border-radius: 30px;
   font-size: 12px;
   font-weight: 700;
-  transition: .2s;
+  transition: 0.2s;
 }
 
-.original-link.visible { display: inline-flex; }
-.original-link:hover { background: var(--blue-hover); }
+.original-link.visible {
+  display: inline-flex;
+}
+
+.original-link:hover {
+  background: var(--blue-hover);
+}
+
+/* FOOTER */
 
 footer {
   margin-top: 100px;
@@ -465,20 +579,52 @@ footer {
   color: var(--sub);
 }
 
+/* ANIMATIONS */
+
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes modalIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .project-section[data-category="graphic"] .project-grid,
+  .project-section[data-category="editorial"] .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 700px) {
-  header { padding: 22px 6%; }
-  .hero { padding: 75px 6% 65px; }
-  .hero h1 { letter-spacing: -2.5px; }
+
+  header {
+    padding: 22px 6%;
+  }
+
+  .hero {
+    padding: 75px 6% 65px;
+  }
+
+  .hero h1 {
+    letter-spacing: -2.5px;
+  }
 
   .category-nav {
     padding: 17px 6%;
@@ -487,24 +633,65 @@ footer {
     flex-wrap: nowrap;
   }
 
-  .category-nav a { white-space: nowrap; }
-  main { padding: 0 6%; }
-  .project-section { padding-top: 65px; }
-  .section-heading { display: block; }
-  .section-description { margin-top: 8px; }
+  .category-nav a {
+    white-space: nowrap;
+  }
+
+  main {
+    padding: 0 6%;
+  }
+
+  .project-section {
+    padding-top: 65px;
+  }
+
+  .section-heading {
+    display: block;
+  }
+
+  .section-description {
+    margin-top: 8px;
+  }
 
   .project-grid,
-  .project-section[data-category="graphic"] .project-grid {
+  .project-section[data-category="graphic"] .project-grid,
+  .project-section[data-category="editorial"] .project-grid {
     grid-template-columns: 1fr;
     gap: 38px;
   }
 
-  .modal-details { grid-template-columns: 1fr; gap: 18px; }
-  .modal { padding: 15px; align-items: flex-start; }
-  .modal-content { padding: 25px 18px; margin: auto 0; }
-  .modal-gallery { grid-template-columns: 1fr; gap: 10px; }
-  .modal-close { top: 15px; right: 13px; }
-  .modal-title { font-size: 21px; }
+  .video-filters {
+    flex-wrap: wrap;
+  }
+
+  .modal {
+    padding: 15px;
+    align-items: flex-start;
+  }
+
+  .modal-content {
+    padding: 25px 18px;
+    margin: auto 0;
+  }
+
+  .modal-gallery {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .modal-close {
+    top: 15px;
+    right: 13px;
+  }
+
+  .modal-title {
+    font-size: 21px;
+  }
+
+  .modal-link-area {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 
   footer {
     padding: 30px 6%;
@@ -518,20 +705,31 @@ footer {
 
 <body>
 
+<!-- HEADER -->
+
 <header>
   <a href="#" class="logo">YOUNGSEON JUNG.</a>
   <div class="header-right">HR DESIGN PORTFOLIO</div>
 </header>
 
+<!-- HERO -->
+
 <section class="hero">
   <div class="hero-label">DESIGN ARCHIVE · 2021 — 2026</div>
-  <h1>HR DESIGN<br><span>PORTFOLIO.</span></h1>
+
+  <h1>
+    HR DESIGN<br>
+    <span>PORTFOLIO.</span>
+  </h1>
+
   <p class="hero-description">
     A collection of visual contents, presentations,
     editorial projects and videos.<br>
     Exploring the power of design in communication.
   </p>
 </section>
+
+<!-- CATEGORY NAVIGATION -->
 
 <nav class="category-nav">
   <a href="#graphic">01. Graphic Design</a>
@@ -540,56 +738,111 @@ footer {
   <a href="#video">04. Video</a>
 </nav>
 
+<!-- PROJECTS -->
+
 <main id="portfolio"></main>
+
+<!-- PROJECT DETAIL MODAL -->
 
 <div class="modal" id="projectModal" role="dialog"
      aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal-content">
-    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
-    <div class="modal-category" id="modalCategory"></div>
-    <h2 class="modal-title" id="modalTitle"></h2>
-    <div class="modal-meta" id="modalMeta"></div>
-    <div class="modal-gallery" id="modalGallery"></div>
 
-    <div class="modal-details" id="modalDetails">
-      <div class="modal-detail" id="contributionArea">
-        <h3>My Contribution</h3>
-        <p id="modalContribution"></p>
-      </div>
-      <div class="modal-detail" id="toolsArea">
-        <h3>Tools Used</h3>
-        <div class="modal-tools" id="modalTools"></div>
-      </div>
+  <div class="modal-content">
+
+    <button class="modal-close" id="modalClose"
+            aria-label="Close">&times;</button>
+
+    <div class="modal-category" id="modalCategory"></div>
+
+    <h2 class="modal-title" id="modalTitle"></h2>
+
+    <div class="modal-meta" id="modalMeta"></div>
+
+    <div class="modal-section" id="modalImagesSection">
+      <div class="modal-section-title">PROJECT IMAGES</div>
+      <div class="modal-gallery" id="modalGallery"></div>
     </div>
 
-    <div class="modal-link-area">
+    <div class="modal-section" id="modalContributionSection">
+      <div class="modal-section-title">MY CONTRIBUTION</div>
+      <div class="modal-contribution" id="modalContribution"></div>
+    </div>
+
+    <div class="modal-section" id="modalToolsSection">
+      <div class="modal-section-title">TOOLS USED</div>
+      <div class="modal-tools" id="modalTools"></div>
+    </div>
+
+    <div class="modal-link-area" id="modalLinkArea">
       <span class="modal-link-label">PROJECT REFERENCE</span>
-      <a class="original-link" id="modalLink" href="#"
-         target="_blank" rel="noopener noreferrer">
+
+      <a class="original-link" id="modalLink"
+         href="#" target="_blank"
+         rel="noopener noreferrer">
         View Original ↗
       </a>
     </div>
+
   </div>
 </div>
 
+<!-- FOOTER -->
+
 <footer>
   <div class="footer-title">YOUNGSEON JUNG.</div>
-  <div class="footer-copy">© 2026 YOUNGSEON JUNG. ALL RIGHTS RESERVED.</div>
+  <div class="footer-copy">
+    © 2026 YOUNGSEON JUNG. ALL RIGHTS RESERVED.
+  </div>
 </footer>
 
-<script>
-const categories = [
-  { id: "graphic", number: "01", title: "Graphic Design", description: "Card News · Poster" },
-  { id: "presentation", number: "02", title: "Presentation", description: "PowerPoint · PPT" },
-  { id: "editorial", number: "03", title: "Editorial", description: "Newsletter · Magazine" },
-  { id: "video", number: "04", title: "Video", description: "Short-form · Long-form" }
-];
 
-const GRAPHIC_PAGE_SIZE = 9;
-let projects = [];
-let graphicPage = 1;
+<script>
+
+/* =====================================
+   1. LOAD PROJECT DATA
+===================================== */
 
 const portfolio = document.getElementById("portfolio");
+
+let projects = [];
+let graphicPage = 1;
+const GRAPHIC_PAGE_SIZE = 9;
+
+let videoFilter = "all";
+
+/* CATEGORY SETTINGS */
+
+const categories = [
+  {
+    id: "graphic",
+    number: "01",
+    title: "Graphic Design",
+    description: "Card News · Poster"
+  },
+  {
+    id: "presentation",
+    number: "02",
+    title: "Presentation",
+    description: "PowerPoint · PPT"
+  },
+  {
+    id: "editorial",
+    number: "03",
+    title: "Editorial",
+    description: "Newsletter · Magazine"
+  },
+  {
+    id: "video",
+    number: "04",
+    title: "Video",
+    description: "Short-form · Long-form"
+  }
+];
+
+
+/* =====================================
+   2. HELPER FUNCTIONS
+===================================== */
 
 function escapeHTML(value = "") {
   return String(value).replace(/[&<>"']/g, char => ({
@@ -602,17 +855,115 @@ function escapeHTML(value = "") {
 }
 
 function normalizeTools(tools) {
-  if (Array.isArray(tools)) return tools.filter(Boolean);
+  if (Array.isArray(tools)) {
+    return tools.filter(Boolean);
+  }
+
   if (typeof tools === "string") {
     return tools.split(",").map(item => item.trim()).filter(Boolean);
   }
+
   return [];
 }
 
+function renderTools(tools) {
+  const normalized = normalizeTools(tools);
+
+  if (!normalized.length) return "";
+
+  return `
+    <div class="project-tools">
+      ${normalized.map(tool => `
+        <span class="tool-tag">${escapeHTML(tool)}</span>
+      `).join("")}
+    </div>
+  `;
+}
+
+
+/* =====================================
+   3. PROJECT CARD TEMPLATE
+===================================== */
+
+function createProjectCard(project, categoryId, index) {
+
+  const cover = project.images?.[0] || "";
+  const tools = renderTools(project.tools);
+
+  return `
+    <article class="project-card">
+
+      <div class="project-thumbnail"
+           data-category="${escapeHTML(categoryId)}"
+           data-index="${index}"
+           role="button"
+           tabindex="0"
+           aria-label="View ${escapeHTML(project.title)} details">
+
+        <div class="thumbnail-placeholder">
+          ${escapeHTML(project.title || "Project")}
+        </div>
+
+        ${cover ? `
+          <img
+            src="${escapeHTML(cover)}"
+            alt="${escapeHTML(project.title || "")}"
+            loading="lazy"
+            onerror="this.style.display='none'"
+          >
+        ` : ""}
+
+        <div class="thumbnail-overlay">
+          <span class="overlay-text">View Details ↗</span>
+        </div>
+
+      </div>
+
+      <div class="project-info">
+
+        <div class="project-info-main">
+
+          <div class="project-title">
+            ${escapeHTML(project.title || "")}
+          </div>
+
+          <div class="project-company">
+            ${escapeHTML(project.organization || "")}
+          </div>
+
+          ${tools}
+
+          <button
+            class="detail-button"
+            data-category="${escapeHTML(categoryId)}"
+            data-index="${index}"
+          >
+            View Details <span>↗</span>
+          </button>
+
+        </div>
+
+        <div class="project-year">
+          ${escapeHTML(project.year || "")}
+        </div>
+
+      </div>
+
+    </article>
+  `;
+}
+
+
+/* =====================================
+   4. RENDER PORTFOLIO
+===================================== */
+
 function renderPortfolio() {
+
   portfolio.innerHTML = "";
 
   categories.forEach(category => {
+
     const categoryProjects = projects.filter(
       project => project.category === category.id
     );
@@ -620,92 +971,421 @@ function renderPortfolio() {
     if (!categoryProjects.length) return;
 
     const section = document.createElement("section");
+
     section.className = "project-section";
     section.id = category.id;
     section.dataset.category = category.id;
 
-const isGraphic = category.id === "graphic";
-const pageCount = isGraphic
-      ? Math.ceil(categoryProjects.length / GRAPHIC_PAGE_SIZE)
-      : 1;
+    let visibleProjects = categoryProjects;
 
-    const visibleProjects = isGraphic
-      ? categoryProjects.slice(
-          (graphicPage - 1) * GRAPHIC_PAGE_SIZE,
-          graphicPage * GRAPHIC_PAGE_SIZE
-        )
-      : categoryProjects;
+    /* GRAPHIC DESIGN PAGINATION */
+
+    let paginationHTML = "";
+
+    if (category.id === "graphic") {
+
+      const pageCount = Math.ceil(
+        categoryProjects.length / GRAPHIC_PAGE_SIZE
+      );
+
+      graphicPage = Math.min(graphicPage, Math.max(pageCount, 1));
+
+      visibleProjects = categoryProjects.slice(
+        (graphicPage - 1) * GRAPHIC_PAGE_SIZE,
+        graphicPage * GRAPHIC_PAGE_SIZE
+      );
+
+      if (pageCount > 1) {
+
+        paginationHTML = `
+          <div class="pagination" aria-label="Graphic Design pages">
+
+            <button
+              data-page="${graphicPage - 1}"
+              ${graphicPage === 1 ? "disabled" : ""}
+              aria-label="Previous page"
+            >‹</button>
+
+            ${Array.from({ length: pageCount }, (_, i) => i + 1)
+              .map(page => `
+                <button
+                  data-page="${page}"
+                  class="${page === graphicPage ? "active" : ""}"
+                  aria-label="Page ${page}"
+                >
+                  ${page}
+                </button>
+              `).join("")}
+
+            <button
+              data-page="${graphicPage + 1}"
+              ${graphicPage === pageCount ? "disabled" : ""}
+              aria-label="Next page"
+            >›</button>
+
+          </div>
+        `;
+      }
+    }
+
+    /* VIDEO FILTER */
+
+    if (category.id === "video") {
+
+      visibleProjects = videoFilter === "all"
+        ? categoryProjects
+        : categoryProjects.filter(
+            project => project.videoType === videoFilter
+          );
+    }
+
+    /* SECTION HEADING */
+
+    const videoFilterHTML = category.id === "video" ? `
+      <div class="video-filters">
+
+        <button
+          class="video-filter ${videoFilter === "short-form" ? "active" : ""}"
+          data-video-filter="short-form"
+        >
+          Short-form
+        </button>
+
+        <button
+          class="video-filter ${videoFilter === "long-form" ? "active" : ""}"
+          data-video-filter="long-form"
+        >
+          Long-form
+        </button>
+
+      </div>
+    ` : "";
+
+    const videoAllButton = category.id === "video" ? `
+      <button
+        class="video-filter ${videoFilter === "all" ? "active" : ""}"
+        data-video-filter="all"
+      >
+        All
+      </button>
+    ` : "";
 
     section.innerHTML = `
+
       <div class="section-heading">
+
         <div>
-          <div class="section-number">${category.number} / PROJECTS</div>
+          <div class="section-number">
+            ${category.number} / PROJECTS
+          </div>
+
           <h2>${escapeHTML(category.title)}</h2>
         </div>
-        <div class="section-description">${escapeHTML(category.description)}</div>
+
+        <div class="section-description">
+          ${escapeHTML(category.description)}
+        </div>
+
       </div>
 
-      <div class="project-grid">
-        ${visibleProjects.map(project => {
-          const globalIndex = projects.indexOf(project);
-          const cover = project.images?.[0] || "";
-
-          return `
-            <article class="project-card">
-              <div class="project-thumbnail"
-                   data-project-index="${globalIndex}"
-                   role="button"
-                   tabindex="0"
-                   aria-label="View ${escapeHTML(project.title)} details">
-
-                ${cover
-                  ? `<img src="${escapeHTML(cover)}"
-                          alt="${escapeHTML(project.title)}"
-                          loading="lazy"
-                          onerror="this.style.display='none'">`
-                  : `<div class="thumbnail-placeholder">${escapeHTML(project.title)}</div>`}
-
-                <div class="thumbnail-overlay">
-                  <span class="overlay-text">View Details ↗</span>
-                </div>
-              </div>
-
-              <div class="project-info">
-                <div>
-                  <div class="project-title">${escapeHTML(project.title)}</div>
-                  <div class="project-company">${escapeHTML(project.organization || "")}</div>
-                  <button class="detail-button" data-project-index="${globalIndex}">
-                    View Details <span>↗</span>
-                  </button>
-                </div>
-                <div class="project-year">${escapeHTML(project.year || "")}</div>
-              </div>
-            </article>
-          `;
-        }).join("")}
-      </div>
-
-      ${isGraphic && pageCount > 1 ? `
-        <div class="pagination" aria-label="Graphic Design pages">
-          <button data-page="${graphicPage - 1}" ${graphicPage === 1 ? "disabled" : ""}>‹</button>
-          ${Array.from({length: pageCount}, (_, i) => i + 1).map(page => `
-            <button data-page="${page}"
-                    class="${page === graphicPage ? "active" : ""}">
-              ${page}
-            </button>
-          `).join("")}
-          <button data-page="${graphicPage + 1}"
-                  ${graphicPage === pageCount ? "disabled" : ""}>›</button>
+      ${category.id === "video" ? `
+        <div class="video-filters">
+          ${videoAllButton}
+          <button
+            class="video-filter ${videoFilter === "short-form" ? "active" : ""}"
+            data-video-filter="short-form"
+          >
+            Short-form
+          </button>
+          <button
+            class="video-filter ${videoFilter === "long-form" ? "active" : ""}"
+            data-video-filter="long-form"
+          >
+            Long-form
+          </button>
         </div>
       ` : ""}
+
+      <div class="project-grid">
+
+        ${visibleProjects.map(project => {
+
+          const globalIndex = categoryProjects.indexOf(project);
+
+          return createProjectCard(
+            project,
+            category.id,
+            globalIndex
+          );
+
+        }).join("")}
+
+      </div>
+
+      ${paginationHTML}
+
     `;
 
     portfolio.appendChild(section);
+
   });
 }
 
+
+/* =====================================
+   5. MODAL ELEMENTS
+===================================== */
+
+const modal = document.getElementById("projectModal");
+const modalClose = document.getElementById("modalClose");
+
+const modalCategory = document.getElementById("modalCategory");
+const modalTitle = document.getElementById("modalTitle");
+const modalMeta = document.getElementById("modalMeta");
+
+const modalGallery = document.getElementById("modalGallery");
+const modalContribution = document.getElementById("modalContribution");
+const modalTools = document.getElementById("modalTools");
+
+const modalImagesSection = document.getElementById("modalImagesSection");
+const modalContributionSection = document.getElementById("modalContributionSection");
+const modalToolsSection = document.getElementById("modalToolsSection");
+
+const modalLink = document.getElementById("modalLink");
+const modalLinkArea = document.getElementById("modalLinkArea");
+
+
+/* =====================================
+   6. OPEN PROJECT DETAILS
+===================================== */
+
+function openProject(categoryId, index) {
+
+  const categoryProjects = projects.filter(
+    project => project.category === categoryId
+  );
+
+  const project = categoryProjects[index];
+
+  if (!project) return;
+
+  modalCategory.textContent =
+    categoryId.toUpperCase() + " / PROJECT DETAILS";
+
+  modalTitle.textContent = project.title || "";
+
+  modalMeta.textContent =
+    `${project.organization || ""}  ·  ${project.year || ""}`;
+
+
+  /* PROJECT IMAGES */
+
+  modalGallery.innerHTML = "";
+
+  const images = project.images || [];
+
+  images.forEach(imagePath => {
+
+    const imageContainer = document.createElement("div");
+    imageContainer.className = "modal-image";
+
+    const image = document.createElement("img");
+
+    image.src = imagePath;
+    image.alt = project.title || "Project image";
+    image.loading = "lazy";
+
+    imageContainer.appendChild(image);
+    modalGallery.appendChild(imageContainer);
+
+  });
+
+  modalImagesSection.style.display =
+    images.length ? "" : "none";
+
+
+  /* CONTRIBUTION */
+
+  const contribution = project.contribution || "";
+
+  modalContribution.textContent = contribution;
+
+  modalContributionSection.style.display =
+    contribution.trim() ? "" : "none";
+
+
+  /* TOOLS */
+
+  const tools = normalizeTools(project.tools);
+
+  modalTools.innerHTML = tools.map(tool => `
+    <span class="tool-tag">${escapeHTML(tool)}</span>
+  `).join("");
+
+  modalToolsSection.style.display =
+    tools.length ? "" : "none";
+
+
+  /* EXTERNAL LINK */
+
+  if (project.link && project.link.trim() !== "") {
+
+    modalLink.href = project.link;
+    modalLink.classList.add("visible");
+    modalLinkArea.style.display = "flex";
+
+  } else {
+
+    modalLink.href = "#";
+    modalLink.classList.remove("visible");
+    modalLinkArea.style.display = "none";
+
+  }
+
+  modal.classList.add("active");
+  document.body.classList.add("modal-open");
+
+  modalClose.focus();
+
+}
+
+
+/* =====================================
+   7. CLOSE MODAL
+===================================== */
+
+function closeModal() {
+
+  modal.classList.remove("active");
+  document.body.classList.remove("modal-open");
+
+}
+
+modalClose.addEventListener("click", closeModal);
+
+modal.addEventListener("click", event => {
+
+  if (event.target === modal) {
+    closeModal();
+  }
+
+});
+
+document.addEventListener("keydown", event => {
+
+  if (event.key === "Escape" && modal.classList.contains("active")) {
+    closeModal();
+  }
+
+});
+
+
+/* =====================================
+   8. PORTFOLIO INTERACTIONS
+===================================== */
+
+portfolio.addEventListener("click", event => {
+
+  /* PROJECT DETAILS BUTTON */
+
+  const detailButton = event.target.closest(".detail-button");
+
+  if (detailButton) {
+
+    openProject(
+      detailButton.dataset.category,
+      Number(detailButton.dataset.index)
+    );
+
+    return;
+  }
+
+
+  /* PROJECT THUMBNAIL */
+
+  const thumbnail = event.target.closest(".project-thumbnail");
+
+  if (thumbnail) {
+
+    openProject(
+      thumbnail.dataset.category,
+      Number(thumbnail.dataset.index)
+    );
+
+    return;
+  }
+
+
+  /* GRAPHIC PAGINATION */
+
+  const pageButton = event.target.closest("[data-page]");
+
+  if (pageButton && !pageButton.disabled) {
+
+    graphicPage = Number(pageButton.dataset.page);
+
+    renderPortfolio();
+
+    document.getElementById("graphic").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+    return;
+  }
+
+
+  /* VIDEO FILTER */
+
+  const videoButton = event.target.closest("[data-video-filter]");
+
+  if (videoButton) {
+
+    videoFilter = videoButton.dataset.videoFilter;
+
+    renderPortfolio();
+
+    document.getElementById("video").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+  }
+
+});
+
+
+/* KEYBOARD ACCESSIBILITY */
+
+portfolio.addEventListener("keydown", event => {
+
+  const thumbnail = event.target.closest(".project-thumbnail");
+
+  if (
+    thumbnail &&
+    (event.key === "Enter" || event.key === " ")
+  ) {
+
+    event.preventDefault();
+
+    openProject(
+      thumbnail.dataset.category,
+      Number(thumbnail.dataset.index)
+    );
+
+  }
+
+});
+
+
+/* =====================================
+   9. LOAD PROJECTS.JSON
+===================================== */
+
 async function loadProjects() {
+
   try {
+
     const response = await fetch("./projects.json");
 
     if (!response.ok) {
@@ -713,145 +1393,37 @@ async function loadProjects() {
     }
 
     const data = await response.json();
-    projects = Array.isArray(data) ? data : (data.projects || []);
+
+    projects = Array.isArray(data)
+      ? data
+      : (data.projects || []);
+
+    if (!Array.isArray(projects)) {
+      throw new Error("Invalid projects data format");
+    }
+
     renderPortfolio();
 
   } catch (error) {
+
     console.error(error);
+
     portfolio.innerHTML = `
-      <p style="padding:40px 0;color:#777b85">
-        Projects could not be loaded. Please check projects.json.
+      <p style="padding:40px 0;color:#777b85;">
+        Projects could not be loaded.
+        Please check projects.json.
       </p>
     `;
+
   }
+
 }
 
-/* Project detail modal */
-const modal = document.getElementById("projectModal");
-const modalClose = document.getElementById("modalClose");
-const modalCategory = document.getElementById("modalCategory");
-const modalTitle = document.getElementById("modalTitle");
-const modalMeta = document.getElementById("modalMeta");
-const modalGallery = document.getElementById("modalGallery");
-const modalLink = document.getElementById("modalLink");
-const modalContribution = document.getElementById("modalContribution");
-const modalTools = document.getElementById("modalTools");
-const contributionArea = document.getElementById("contributionArea");
-const toolsArea = document.getElementById("toolsArea");
 
-function openProject(index) {
-  const project = projects[index];
-  if (!project) return;
-
-  const category = categories.find(item => item.id === project.category);
-
-  modalCategory.textContent =
-    `${(category?.title || project.category || "PROJECT").toUpperCase()} / PROJECT DETAILS`;
-
-  modalTitle.textContent = project.title || "Untitled Project";
-
-  modalMeta.textContent =
-    `${project.organization || ""}${project.organization && project.year ? " · " : ""}${project.year || ""}`;
-
-  modalGallery.innerHTML = "";
-
-  (project.images || []).forEach(imagePath => {
-    const imageContainer = document.createElement("div");
-    imageContainer.className = "modal-image";
-
-    const image = document.createElement("img");
-    image.src = imagePath;
-    image.alt = project.title || "Project image";
-    image.loading = "lazy";
-    image.onerror = () => { imageContainer.style.display = "none"; };
-
-    imageContainer.appendChild(image);
-    modalGallery.appendChild(imageContainer);
-  });
-
-  const contribution = (project.contribution || "").trim();
-  contributionArea.style.display = contribution ? "block" : "none";
-  modalContribution.textContent = contribution;
-
-  const tools = normalizeTools(project.tools);
-  toolsArea.style.display = tools.length ? "block" : "none";
-
-  modalTools.innerHTML = tools.map(tool =>
-    `<span class="tool-tag">${escapeHTML(tool)}</span>`
-  ).join("");
-
-  if (project.link && project.link.trim()) {
-    modalLink.href = project.link;
-    modalLink.classList.add("visible");
-  } else {
-    modalLink.href = "#";
-    modalLink.classList.remove("visible");
-  }
-
-  modal.classList.add("active");
-  document.body.classList.add("modal-open");
-  modalClose.focus();
-}
-
-function closeModal() {
-  modal.classList.remove("active");
-  document.body.classList.remove("modal-open");
-}
-
-modalClose.addEventListener("click", closeModal);
-
-modal.addEventListener("click", event => {
-  if (event.target === modal) closeModal();
-});
-
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape" && modal.classList.contains("active")) {
-    closeModal();
-  }
-
-  if (
-    (event.key === "Enter" || event.key === " ") &&
-    event.target.classList.contains("project-thumbnail")
-  ) {
-    event.preventDefault();
-    openProject(Number(event.target.dataset.projectIndex));
-  }
-});
-
-portfolio.addEventListener("click", event => {
-  const paginationButton = event.target.closest(".pagination button[data-page]");
-
-  if (paginationButton && !paginationButton.disabled) {
-    graphicPage = Number(paginationButton.dataset.page);
-    renderPortfolio();
-
-    document.getElementById("graphic")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-    return;
-  }
-
-  const trigger = event.target.closest("[data-project-index]");
-
-  if (trigger) {
-    openProject(Number(trigger.dataset.projectIndex));
-  }
-});
-
-/* Smooth category navigation */
-document.querySelectorAll(".category-nav a").forEach(link => {
-  link.addEventListener("click", function(event) {
-    event.preventDefault();
-
-    document.querySelector(this.getAttribute("href"))?.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  });
-});
+/* START */
 
 loadProjects();
+
 </script>
 
 </body>
