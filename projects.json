@@ -2,7 +2,7 @@
 {
   "projects": [
  {
-      "id": "graphic-05",
+      "id": "graphic-01",
       "category": "graphic",
       "title": "Reporter",
       "organization": "Supreme Prosecutors' Office",
@@ -18,7 +18,7 @@
       "link": "https://blog.naver.com/pro_to_u/223205152174"
     },
        {
-      "id": "graphic-04",
+      "id": "graphic-02",
       "category": "graphic",
       "title": "Fact-check Ambassador",
       "organization": "Community Media Foundation",
@@ -33,7 +33,7 @@
       "link": "https://www.instagram.com/p/CijOwAihrse/"
     },
     {
-      "id": "graphic-01",
+      "id": "graphic-03",
       "category": "graphic",
       "title": "Career Reporter",
       "organization": "Ewha Womans University",
@@ -47,7 +47,7 @@
       "link": "https://www.instagram.com/p/CiPELBdPKFg/"
     },
     {
-      "id": "graphic-02",
+      "id": "graphic-04",
       "category": "graphic",
       "title": "Career Reporter",
       "organization": "Ewha Womans University",
@@ -63,7 +63,7 @@
       "link": "https://www.instagram.com/p/CkdJWb3vsUT/"
     },
       {
-      "id": "graphic-03",
+      "id": "graphic-05",
       "category": "graphic",
       "title": "Career Reporter",
       "organization": "Ewha Womans University",
